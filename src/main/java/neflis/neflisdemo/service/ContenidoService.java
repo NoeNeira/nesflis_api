@@ -40,7 +40,7 @@ public class ContenidoService {
 
     public ContenidoApi getcontents() {
         return contents;
-    }
+    }*/
 
     public ContenidoApi agregarContents(ContenidoApi newcontents) {
         long count = contentsList.stream().count();
@@ -50,5 +50,4 @@ public class ContenidoService {
         this.contenidoStorage.agregarContentss(contentsList);
         return newcontents;
     }
-*/
 }

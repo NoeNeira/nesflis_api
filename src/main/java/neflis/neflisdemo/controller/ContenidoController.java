@@ -17,12 +17,12 @@ public class ContenidoController {
     @GetMapping("/contents")
     public List<ContenidoApi> contents(){
         return contenidoService.getContentsList();
-    }}
-    /*@PostMapping("/contents")
+    }
+    @PostMapping("/contents")
     public ContenidoApi addContent(@RequestBody ContenidoApi contents){
         return contenidoService.agregarContents(contents);}}
 
-    @RequestMapping(value = "/contents", produces = MediaType.APPLICATION_JSON_VALUE,  method = RequestMethod.GET)
+   /* @RequestMapping(value = "/contents", produces = MediaType.APPLICATION_JSON_VALUE,  method = RequestMethod.GET)
     public String getAllContentsJSON (Model model)
     {
         model.addAttribute("contents", contenidoService.getContentsList() );

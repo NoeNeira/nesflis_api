@@ -24,7 +24,7 @@ public class ContenidoStorage {
                 new TypeReference<List<ContenidoApi>>() {});
         } catch (IOException e) {
             e.printStackTrace();
-            throw new RuntimeException(e);}}}
+            throw new RuntimeException(e);}}
 
      /* private String getContents()
     {
@@ -34,7 +34,8 @@ public class ContenidoStorage {
         String result = restTemplate.getForObject(uri, String.class);
         return result;
 
-    }     public void agregarContentss (List <ContenidoApi> contents){
+    }     */
+    public void agregarContentss (List <ContenidoApi> contents){
         try {
             objectMapper.writeValue(
                     new File("src/main/resources/Contents.json"), contents);
@@ -42,4 +43,4 @@ public class ContenidoStorage {
             e.printStackTrace();
             throw new RuntimeException(e);}}
 
-        }*/
+        }
