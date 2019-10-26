@@ -2,7 +2,7 @@ package neflis.neflisdemo.utils;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
-import java.io.IOException;
+
 
 
 public class Sha1 {
@@ -22,6 +22,7 @@ public class Sha1 {
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+
         }
     }
 }
