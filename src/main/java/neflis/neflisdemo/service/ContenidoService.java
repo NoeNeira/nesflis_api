@@ -3,6 +3,8 @@ package neflis.neflisdemo.service;
 
 import neflis.neflisdemo.model.Contenido;
 import neflis.neflisdemo.model.ContenidoApi;
+import neflis.neflisdemo.model.MovieApi;
+import neflis.neflisdemo.model.SerieApi;
 import neflis.neflisdemo.persistance.ContenidoStorage;
 import neflis.neflisdemo.util.CustomObjectMapper;
 import neflis.neflisdemo.util.Util;
@@ -36,28 +38,109 @@ public class ContenidoService {
         }
     }
 
-
-
-    public List<Contenido> cargarContenidosIniciales(){
-
-        List<Contenido> movies = new ArrayList<>();
-
-        String movie1URL = Util.URL_API + "?t=braveheart&apikey=" +  Util.API_KEY;
-        String movie2URL = Util.URL_API + "?t=titanic&apikey=" +  Util.API_KEY;
-        String movie3URL = Util.URL_API + "?t=mask&apikey=" +  Util.API_KEY;
-
-        Contenido c = getMovie(movie1URL);
-        movies.add(c);
-//        movies.add(getMovie(movie2URL));
-//        movies.add(getMovie(movie3URL));
-
-
-        return movies;
+    public List<Contenido> contenidoSerie(){
+        List<Contenido> contenidoTotalSerie= new ArrayList<>();
+        String serie1 = Util.URL_API + "?t=breaking+bad&apikey=" + Util.API_KEY;
+        String serie2 = Util.URL_API + "?t=stranger+things&apikey=" + Util.API_KEY;
+        String serie3 = Util.URL_API + "?t=you&apikey=" + Util.API_KEY;
+        Contenido f = getContenido(serie1);
+        Contenido g = getContenido(serie2);
+        Contenido h = getContenido(serie3);
+        contenidoTotalSerie.add(f);
+        contenidoTotalSerie.add(g);
+        contenidoTotalSerie.add(h);
+        return contenidoTotalSerie;
 
 
     }
+    public List<Contenido> cargarContenidosIniciales() {
+        List<Contenido> contenidoTotal= new ArrayList<>();
+        String movie1URL = Util.URL_API + "?t=brave+heart&apikey=" + Util.API_KEY;
+        String movie2URL = Util.URL_API + "?t=titanic&apikey=" + Util.API_KEY;
+        String movie3URL = Util.URL_API + "?t=mask&apikey=" + Util.API_KEY;
+
+        Contenido c = getContenido(movie1URL);
+        Contenido d = getContenido(movie2URL);
+        Contenido e = getContenido(movie3URL);
 
 
+        /*
+        movies.add(c);
+        movies.add(d);
+        movies.add(e);*/
+        contenidoTotal.add(c);
+        contenidoTotal.add(d);
+        contenidoTotal.add(e);
+
+        return contenidoTotal;
+
+
+    }
+    private Contenido getContenido(String contenido){
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
+                .url(contenido)
+                .get()
+                .build();
+
+        Call call = client.newCall(request);
+        Response response = null;
+        try {
+            response = call.execute();
+            String json = response.body().string();
+
+            CustomObjectMapper om =  new CustomObjectMapper();
+            Contenido c = om.readValue(json,Contenido.class);
+            return c;
+        } catch (IOException e) {
+            //log + tirar la excepcion
+            e.printStackTrace();
+            throw new RuntimeException("There was an error reading content", e);
+    /*private MovieApi getContenidoMovie(String movie){
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
+                .url(movie)
+                .get()
+                .build();
+
+        Call call = client.newCall(request);
+        Response response = null;
+        try {
+            response = call.execute();
+            String json = response.body().string();
+
+            CustomObjectMapper om =  new CustomObjectMapper();
+            MovieApi c = om.readValue(json,MovieApi.class);
+            return c;
+        } catch (IOException e) {
+            //log + tirar la excepcion
+            e.printStackTrace();
+            throw new RuntimeException("There was an error reading content", e);
+        }
+    }
+
+    private SerieApi getContenidoSeries(String serie){
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
+                .url(serie)
+                .get()
+                .build();
+        Call call = client.newCall(request);
+        Response response = null;
+        try {
+            response = call.execute();
+            String json = response.body().string();
+
+            CustomObjectMapper om =  new CustomObjectMapper();
+            SerieApi c = om.readValue(json,SerieApi.class);
+            return c;
+        } catch (IOException e) {
+            //log + tirar la excepcion
+            e.printStackTrace();
+            throw new RuntimeException("There was an error reading contentt", e);
+        }
+    }
+    /*
     private Contenido getMovie(String movie){
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
@@ -79,8 +162,8 @@ public class ContenidoService {
             e.printStackTrace();
             throw new RuntimeException("There was an error reading content", e);
         }
-    }
-
+    }*/
+        }}
 
     public List<ContenidoApi> getContentsList() {
         contentsList = contenidoStorage.contents();
@@ -91,10 +174,6 @@ public class ContenidoService {
         return contentsList;
     }*/
     }
-
-
-
-
 
     public void setContentsList(List<ContenidoApi> contentsList) {
         this.contentsList = contentsList;

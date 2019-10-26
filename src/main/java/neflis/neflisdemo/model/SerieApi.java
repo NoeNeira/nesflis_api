@@ -1,10 +1,6 @@
 package neflis.neflisdemo.model;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
-public class Contenido implements Serializable {
+public class SerieApi extends Contenido {
     private int id;
     private String title;
     private String year;
@@ -14,25 +10,12 @@ public class Contenido implements Serializable {
     private String actors;
     private String plot;
     private SeasonApi seasons;
-    private EpisodeApi episodes;
 
-    //@org.jetbrains.annotations.Contract(pure = true)
-
-
-    public Contenido(){}
-    public Contenido(int id, String title, String year, String runtime, String genre, String director, String actors, String plot) {
-       //if(!seasons.equals(null)&& !episodes.equals(null)) return
-        this.id = id;
-        this.title = title;
-        this.year = year;
-        this.runtime = runtime;
-        this.genre = genre;
-        this.director = director;
-        this.actors = actors;
-        this.plot = plot;
-
+    public SerieApi(int id, String title, String year, String runtime, String genre, String director, String actors, String plot, SeasonApi seasons, String number_of_seasons) {
+        super(id, title, year, runtime, genre, director, actors, plot);
+        this.seasons=seasons;
+        this.number_of_seasons = number_of_seasons;
     }
-
 
     public int getId() {
         return id;
@@ -41,7 +24,6 @@ public class Contenido implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
-
 
     public String getTitle() {
         return title;
@@ -99,8 +81,24 @@ public class Contenido implements Serializable {
         this.plot = plot;
     }
 
+    public SeasonApi getSeasons() {
+        return seasons;
+    }
 
-    //    private ArrayList<Season> seasons; TO-DO
+    public void setSeasons(SeasonApi seasons) {
+        this.seasons = seasons;
+    }
+
+    public String getNumber_of_seasons() {
+        return number_of_seasons;
+    }
+
+    public void setNumber_of_seasons(String number_of_seasons) {
+        this.number_of_seasons = number_of_seasons;
+    }
+
+    private String number_of_seasons;
+
 
 
 
