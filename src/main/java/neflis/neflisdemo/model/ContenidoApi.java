@@ -3,7 +3,7 @@ package neflis.neflisdemo.model;
 import java.io.Serializable;
 
 public class ContenidoApi implements Serializable {
-    private Integer id;
+    private String id;
     private String title;
     private Integer year;
     private Integer duration;
@@ -13,7 +13,7 @@ public class ContenidoApi implements Serializable {
     private String plot;
     private String season;
 
-    public ContenidoApi(Integer id, String title, Integer year, Integer duration, String genre, String directors, String actors, String plot) {
+    public ContenidoApi(String id, String title, Integer year, Integer duration, String genre, String directors, String actors, String plot) {
         this.id = id;
         this.title = title;
         this.year = year;
@@ -23,7 +23,7 @@ public class ContenidoApi implements Serializable {
         this.actors = actors;
         this.plot = plot;
     }
-    public ContenidoApi(Integer id, String title, Integer year, Integer duration, String genre, String directors,
+    public ContenidoApi(String id, String title, Integer year, Integer duration, String genre, String directors,
                      String actors, String plot, String season) {
         this.id = id;
         this.title = title;
@@ -36,11 +36,11 @@ public class ContenidoApi implements Serializable {
         this.season=season;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
