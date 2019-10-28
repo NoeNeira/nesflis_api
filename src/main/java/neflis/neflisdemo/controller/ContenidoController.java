@@ -3,6 +3,7 @@ package neflis.neflisdemo.controller;
 import neflis.neflisdemo.model.Contenido;
 import neflis.neflisdemo.model.ContenidoApi;
 import neflis.neflisdemo.service.ContenidoService;
+import neflis.neflisdemo.service.SerieService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,6 +20,8 @@ public class ContenidoController {
     public List<Contenido> contents(){
         return contenidoService.cargarContenidosIniciales();
     }}
+
+
     /*@PostMapping("/contents")
     public ContenidoApi addContent(@RequestBody ContenidoApi contents){
         return contenidoService.agregarContents(contents);}}

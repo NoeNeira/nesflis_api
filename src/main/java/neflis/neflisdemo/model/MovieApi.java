@@ -14,6 +14,17 @@ public class MovieApi extends Contenido {
         super(id, title, year, runtime, genre, director, actors, plot);
     }
 
+    /*public MovieApi(int id, String title, String year, String runtime, String genre, String director, String actors, String plot) {
+        this.id = id;
+        this.title = title;
+        this.year = year;
+        this.runtime = runtime;
+        this.genre = genre;
+        this.director = director;
+        this.actors = actors;
+        this.plot = plot;
+    }*/
+
     @Override
     public int getId() {
         return id;

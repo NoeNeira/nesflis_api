@@ -15,13 +15,13 @@ public class Contenido implements Serializable {
     private String plot;
     private SeasonApi seasons;
     private EpisodeApi episodes;
-
-    //@org.jetbrains.annotations.Contract(pure = true)
-
+    private MovieApi movie;
+    private SerieApi serie;
+    private String totalseasons;
 
     public Contenido(){}
+
     public Contenido(int id, String title, String year, String runtime, String genre, String director, String actors, String plot) {
-       //if(!seasons.equals(null)&& !episodes.equals(null)) return
         this.id = id;
         this.title = title;
         this.year = year;
@@ -30,10 +30,9 @@ public class Contenido implements Serializable {
         this.director = director;
         this.actors = actors;
         this.plot = plot;
+        this.totalseasons=totalseasons;
 
     }
-
-
     public int getId() {
         return id;
     }

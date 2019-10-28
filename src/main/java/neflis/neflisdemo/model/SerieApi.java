@@ -1,5 +1,7 @@
 package neflis.neflisdemo.model;
 
+import java.util.List;
+
 public class SerieApi extends Contenido {
     private int id;
     private String title;
@@ -9,13 +11,26 @@ public class SerieApi extends Contenido {
     private String director;
     private String actors;
     private String plot;
-    private SeasonApi seasons;
+    //private SeasonApi seasons;
+    private List<SeasonApi> seasons;
+    private String totalseasons;
 
-    public SerieApi(int id, String title, String year, String runtime, String genre, String director, String actors, String plot, SeasonApi seasons, String number_of_seasons) {
+    public SerieApi(int id, String title, String year, String runtime, String genre, String director, String actors, String plot, List<SeasonApi> seasons, String totalseasons) {
         super(id, title, year, runtime, genre, director, actors, plot);
         this.seasons=seasons;
-        this.number_of_seasons = number_of_seasons;
+        this.totalseasons = totalseasons;
     }
+    /*public SerieApi(int id, String title, String year, String runtime, String genre, String director, String actors, String plot, String totalseasons) {
+        this.id = id;
+        this.title = title;
+        this.year = year;
+        this.runtime = runtime;
+        this.genre = genre;
+        this.director = director;
+        this.actors = actors;
+        this.plot = plot;
+       // this.seasons = seasons;
+        this.totalseasons = totalseasons;}*/
 
     public int getId() {
         return id;
@@ -81,26 +96,19 @@ public class SerieApi extends Contenido {
         this.plot = plot;
     }
 
-    public SeasonApi getSeasons() {
+    /*public List<SeasonApi> getSeasons() {
         return seasons;
     }
 
-    public void setSeasons(SeasonApi seasons) {
+    public void setSeasons(List<SeasonApi> seasons) {
         this.seasons = seasons;
     }
-
-    public String getNumber_of_seasons() {
-        return number_of_seasons;
+*/
+    public String getTotalseasons() {
+        return totalseasons;
     }
 
-    public void setNumber_of_seasons(String number_of_seasons) {
-        this.number_of_seasons = number_of_seasons;
+    public void setTotalseasons(String totalseasons) {
+        this.totalseasons = totalseasons;
     }
-
-    private String number_of_seasons;
-
-
-
-
-
 }
