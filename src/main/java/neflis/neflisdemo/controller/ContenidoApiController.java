@@ -20,7 +20,7 @@ public class ContenidoApiController {
     }
 
     @GetMapping("/contents")
-    public List<Contenido> contents(){
+    public List<ContenidoApi> contents(){
         return contenidoService.cargarContenidosIniciales();
     }
     }

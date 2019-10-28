@@ -24,6 +24,8 @@ import java.util.List;
 
 import java.util.List;
 
+@Service
+
 public class ContenidoApiService {
     public ContenidoApiStorage contenidoStorage;
     private ContenidoApi contenido;
@@ -36,22 +38,22 @@ public class ContenidoApiService {
     }
 
 
-    public ContenidoApiService() {
+    public void ContenidoApiService() {
         if (this.contenidos == null) {
             this.contenidos = cargarContenidosIniciales();
         }
     }
 
 
-    public List<Contenido> cargarContenidosIniciales() {
+    public List<ContenidoApi> cargarContenidosIniciales() {
 
-        List<Contenido> movies = new ArrayList<>();
+        List<ContenidoApi> movies = new ArrayList<>();
 
         String movie1URL = Util.URL_API + "?t=braveheart&apikey=" + Util.API_KEY;
         String movie2URL = Util.URL_API + "?t=titanic&apikey=" + Util.API_KEY;
         String movie3URL = Util.URL_API + "?t=mask&apikey=" + Util.API_KEY;
 
-        Contenido c = getMovie(movie1URL);
+        ContenidoApi c = getMovie(movie1URL);
         movies.add(c);
 //        movies.add(getMovie(movie2URL));
 //        movies.add(getMovie(movie3URL));
@@ -63,7 +65,7 @@ public class ContenidoApiService {
     }
 
 
-    private Contenido getMovie(String movie) {
+    private ContenidoApi getMovie(String movie) {
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
                 .url(movie)
@@ -77,7 +79,7 @@ public class ContenidoApiService {
             String json = response.body().string();
 
             CustomObjectMapper om = new CustomObjectMapper();
-            Contenido c = om.readValue(json, Contenido.class);
+            ContenidoApi c = om.readValue(json, ContenidoApi.class);
             return c;
         } catch (IOException e) {
             //log + tirar la excepcion

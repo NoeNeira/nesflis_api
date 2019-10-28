@@ -1,34 +1,43 @@
 package neflis.neflisdemo.model;
 
+import neflis.neflisdemo.utils.Sha1;
+
 import java.io.Serializable;
 
 public class ContenidoApi implements Serializable {
     private String id;
     private String title;
-    private Integer year;
-    private Integer duration;
+    private String year;
+    private String runtime;
     private String genre;
     private String directors;
     private String actors;
     private String plot;
     private String season;
 
-    public ContenidoApi(String id, String title, Integer year, Integer duration, String genre, String directors, String actors, String plot) {
+    protected Sha1 sha;
+
+   // private List<Pelicula> peliculas;
+    //private List<Serie> series;
+
+    public ContenidoApi(){};
+
+    public ContenidoApi(String id, String title, String year, String runtime, String genre, String directors, String actors, String plot) {
         this.id = id;
         this.title = title;
         this.year = year;
-        this.duration = duration;
+        this.runtime = runtime;
         this.genre = genre;
         this.directors = directors;
         this.actors = actors;
         this.plot = plot;
     }
-    public ContenidoApi(String id, String title, Integer year, Integer duration, String genre, String directors,
+    public ContenidoApi(String id, String title, String year, String runtime, String genre, String directors,
                      String actors, String plot, String season) {
         this.id = id;
         this.title = title;
         this.year = year;
-        this.duration = duration;
+        this.runtime = runtime;
         this.genre = genre;
         this.directors = directors;
         this.actors = actors;
@@ -37,7 +46,7 @@ public class ContenidoApi implements Serializable {
     }
 
     public String getId() {
-        return id;
+        return sha.generarId();
     }
 
     public void setId(String id) {
@@ -52,20 +61,20 @@ public class ContenidoApi implements Serializable {
         this.title = title;
     }
 
-    public Integer getYear() {
+    public String getYear() {
         return year;
     }
 
-    public void setYear(Integer year) {
+    public void setYear(String year) {
         this.year = year;
     }
 
-    public Integer getDuration() {
-        return duration;
+    public String getRuntime() {
+        return runtime;
     }
 
-    public void setDuration(Integer duration) {
-        this.duration = duration;
+    public void setRuntime(String runtime) {
+        this.runtime = runtime;
     }
 
     public String getGenre() {
