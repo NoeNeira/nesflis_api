@@ -10,7 +10,7 @@ public class MovieApi extends Contenido {
     private String actors;
     private String plot;
 
-    public MovieApi(int id, String title, String year, String runtime, String genre, String director, String actors, String plot) {
+    /*public MovieApi(int id, String title, String year, String runtime, String genre, String director, String actors, String plot) {
         super(id, title, year, runtime, genre, director, actors, plot);
     }
 
@@ -23,7 +23,7 @@ public class MovieApi extends Contenido {
         this.director = director;
         this.actors = actors;
         this.plot = plot;
-    }*/
+    }
 
     @Override
     public int getId() {
@@ -34,7 +34,7 @@ public class MovieApi extends Contenido {
     public void setId(int id) {
         this.id = id;
     }
-
+*/
     @Override
     public String getTitle() {
         return title;

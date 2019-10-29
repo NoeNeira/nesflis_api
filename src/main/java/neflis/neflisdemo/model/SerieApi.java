@@ -1,9 +1,10 @@
 package neflis.neflisdemo.model;
 
+
 import java.util.List;
 
 public class SerieApi extends Contenido {
-    private int id;
+    private String id;
     private String title;
     private String year;
     private String runtime;
@@ -15,9 +16,9 @@ public class SerieApi extends Contenido {
     private List<SeasonApi> seasons;
     private String totalseasons;
 
-    public SerieApi(int id, String title, String year, String runtime, String genre, String director, String actors, String plot, List<SeasonApi> seasons, String totalseasons) {
-        super(id, title, year, runtime, genre, director, actors, plot);
-        this.seasons=seasons;
+   /* public SerieApi(String id, String title, String year, String runtime, String genre, String director, String actors, String plot, SeasonApi seasons, String totalseasons) {
+        super(id, title, year, runtime, genre, director, actors, plot, seasons);
+        //this.seasons=seasons;
         this.totalseasons = totalseasons;
     }
     /*public SerieApi(int id, String title, String year, String runtime, String genre, String director, String actors, String plot, String totalseasons) {
@@ -30,13 +31,13 @@ public class SerieApi extends Contenido {
         this.actors = actors;
         this.plot = plot;
        // this.seasons = seasons;
-        this.totalseasons = totalseasons;}*/
+        this.totalseasons = totalseasons;}
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -94,7 +95,7 @@ public class SerieApi extends Contenido {
 
     public void setPlot(String plot) {
         this.plot = plot;
-    }
+    } */
 
     /*public List<SeasonApi> getSeasons() {
         return seasons;

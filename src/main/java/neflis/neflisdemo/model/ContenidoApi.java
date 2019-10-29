@@ -16,7 +16,7 @@ public class ContenidoApi /*implements Serializable*/ {
         private String director;
         private String actors;
         private String plot;
-        private String Season;
+        private String Season= null;
 
         private List<Pelicula> peliculas;
         private List<Serie> series;

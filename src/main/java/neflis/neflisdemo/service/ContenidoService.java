@@ -31,6 +31,7 @@ public class ContenidoService {
     public void contenidosTotales(){
         if(this.contenidos == null){
             this.contenidos= cargarContenidosIniciales();
+
             /*  new ArrayList<>();
             contenidos.addAll(movieService.contenidoMovie());
             contenidos.addAll(serieService.contenidoSerie());

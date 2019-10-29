@@ -1,11 +1,16 @@
 package neflis.neflisdemo.model;
 
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import neflis.neflisdemo.util.Sha1;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Contenido implements Serializable {
-    private int id;
+
+    private String id;
     private String title;
     private String year;
     private String runtime;
@@ -13,16 +18,17 @@ public class Contenido implements Serializable {
     private String director;
     private String actors;
     private String plot;
-    private SeasonApi seasons;
+    /*private SeasonApi seasons;
     private EpisodeApi episodes;
     private MovieApi movie;
-    private SerieApi serie;
-    private String totalseasons;
+    private SerieApi serie;*/
+
+    private String totalSeasons = null;
 
     public Contenido(){}
 
-    public Contenido(int id, String title, String year, String runtime, String genre, String director, String actors, String plot) {
-        this.id = id;
+    public Contenido(String id, String title, String year, String runtime, String genre, String director, String actors, String plot) {
+        this.id =id;
         this.title = title;
         this.year = year;
         this.runtime = runtime;
@@ -30,14 +36,14 @@ public class Contenido implements Serializable {
         this.director = director;
         this.actors = actors;
         this.plot = plot;
-        this.totalseasons=totalseasons;
+        this.totalSeasons= totalSeasons;
 
     }
-    public int getId() {
-        return id;
+    public String getId() {
+        return Sha1.sha1(getTitle());
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -98,7 +104,13 @@ public class Contenido implements Serializable {
         this.plot = plot;
     }
 
+    public String getTotalSeasons() {
+        return totalSeasons;
+    }
 
+    public void setTotalSeasons(String totalSeasons) {
+        this.totalSeasons = totalSeasons;
+    }
     //    private ArrayList<Season> seasons; TO-DO
 
 
