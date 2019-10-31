@@ -4,6 +4,7 @@ package neflis.neflisdemo.persistance;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import neflis.neflisdemo.model.Contenido;
 import neflis.neflisdemo.model.ContenidoApi;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -18,10 +19,10 @@ public class ContenidoStorage {
     private ObjectMapper objectMapper;
     public ContenidoStorage(ObjectMapper objectMapper){this.objectMapper=objectMapper;}
 
-     public List<ContenidoApi> contents(){
+     public List<Contenido> contents(){
         try { return objectMapper.readValue(
              new File("/home/yaz/neflis/src/main/resources/Contents.json") ,
-                new TypeReference<List<ContenidoApi>>() {});
+                new TypeReference<List<Contenido>>() {});
         } catch (IOException e) {
             e.printStackTrace();
             throw new RuntimeException(e);}}

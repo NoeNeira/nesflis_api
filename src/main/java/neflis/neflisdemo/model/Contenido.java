@@ -40,7 +40,7 @@ public class Contenido implements Serializable {
 
     }
     public String getId() {
-        return Sha1.sha1(getTitle());
+        return Sha1.sha1(this.toString());
     }
 
     public void setId(String id) {

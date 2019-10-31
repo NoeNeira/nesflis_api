@@ -15,11 +15,12 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ContenidoService {
     public ContenidoStorage contenidoStorage;
-    private List<ContenidoApi> contentsList;
+    private List<Contenido> contentsList;
     private List<Contenido> contenidos;
     private SerieService serieService;
     private  MovieService movieService;
@@ -31,16 +32,16 @@ public class ContenidoService {
     public void contenidosTotales(){
         if(this.contenidos == null){
             this.contenidos= cargarContenidosIniciales();
-
-            /*  new ArrayList<>();
-            contenidos.addAll(movieService.contenidoMovie());
-            contenidos.addAll(serieService.contenidoSerie());
-        /*List<MovieApi> movie = movieService.contenidoMovie();
-        contenidos.addAll(movie);
-
-        List<SerieApi> series = serieService.contenidoSerie();
-        contenidos.addAll(series);*/
     }}
+    public List<Contenido> contenidoPorTitulo(String title) {
+        //contenidos=contenidoStorage.contents();
+        /*if (title == null) {
+            return contenidos;
+        } else {*/
+            return cargarContenidosIniciales().stream().filter(c -> c.getTitle().equals(title)).collect(Collectors.toList()
+            );
+        }
+
     public List<Contenido> cargarContenidosIniciales() {
         List<Contenido> contenidoTotal= new ArrayList<>();
         String movie1URL = Util.URL_API + "?t=brave+heart&apikey=" + Util.API_KEY;
@@ -141,7 +142,7 @@ public class ContenidoService {
             throw new RuntimeException("There was an error reading content", e);
         }
     }*/
-    public List<ContenidoApi> getContentsList() {
+    public List<Contenido> getContentsList() {
         contentsList = contenidoStorage.contents();
      return contentsList;
         /*if (contentsList == null) {
@@ -151,7 +152,7 @@ public class ContenidoService {
     }*/
     }
 
-    public void setContentsList(List<ContenidoApi> contentsList) {
+    public void setContentsList(List<Contenido> contentsList) {
         this.contentsList = contentsList;
     }
 

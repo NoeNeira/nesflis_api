@@ -16,11 +16,14 @@ public class ContenidoController {
         this.contenidoService=contenidoService;
     }
 
-    @GetMapping("/contents")
+   /* @GetMapping("/contents")
     public List<Contenido> contents(){
         return contenidoService.cargarContenidosIniciales();
-    }}
-
+    }*/
+    @GetMapping("/contents")
+    public List<Contenido> contents(@RequestParam(value= "title", required = false)String title){
+        return contenidoService.contenidoPorTitulo(title);
+}}
 
     /*@PostMapping("/contents")
     public ContenidoApi addContent(@RequestBody ContenidoApi contents){
