@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import neflis.neflisdemo.model.ContenidoApi;
 import org.springframework.stereotype.Component;
-
+import org.springframework.web.client.RestTemplate;
 
 
 import java.io.File;
@@ -26,7 +26,7 @@ public class ContenidoStorage {
             e.printStackTrace();
             throw new RuntimeException(e);}}
 
-     /* private String getContents()
+     private String getContents()
     {
         final String uri = "http://www.omdbapi.com/?i=tt3896198&apikey=4823c028";
 
@@ -34,8 +34,13 @@ public class ContenidoStorage {
         String result = restTemplate.getForObject(uri, String.class);
         return result;
 
+
+    }     }
+    /*public void agregarContentss (List <ContenidoApi> contents){
+=======
     }     */
     public void agregarContentss (List <ContenidoApi> contents){
+
         try {
             objectMapper.writeValue(
                     new File("src/main/resources/Contents.json"), contents);

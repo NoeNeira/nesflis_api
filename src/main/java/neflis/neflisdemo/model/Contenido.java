@@ -1,30 +1,34 @@
 package neflis.neflisdemo.model;
 
-import neflis.Pelicula;
-import neflis.Serie;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import neflis.neflisdemo.util.Sha1;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class Contenido implements Serializable {
 
-public class ContenidoApi /*implements Serializable*/ {
-        private Integer id;
-        private String title;
-        private String year;
-        private String runtime;
-        private String genre;
-        private String director;
-        private String actors;
-        private String plot;
-        private String Season= null;
+    private String id;
+    private String title;
+    private String year;
+    private String runtime;
+    private String genre;
+    private String director;
+    private String actors;
+    private String plot;
+    /*private SeasonApi seasons;
+    private EpisodeApi episodes;
+    private MovieApi movie;
+    private SerieApi serie;*/
 
-        private List<Pelicula> peliculas;
-        private List<Serie> series;
+    private String totalSeasons = null;
 
-        public ContenidoApi(){}
+    public Contenido(){}
 
-        public ContenidoApi(Integer id, String title, String year, String runtime, String genre, String director, String actors, String plot) {
-        this.id = id;
+    public Contenido(String id, String title, String year, String runtime, String genre, String director, String actors, String plot) {
+        this.id =id;
         this.title = title;
         this.year = year;
         this.runtime = runtime;
@@ -32,15 +36,17 @@ public class ContenidoApi /*implements Serializable*/ {
         this.director = director;
         this.actors = actors;
         this.plot = plot;
+        this.totalSeasons= totalSeasons;
+
+    }
+    public String getId() {
+        return Sha1.sha1(getTitle());
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
+
 
     public String getTitle() {
         return title;
@@ -96,5 +102,18 @@ public class ContenidoApi /*implements Serializable*/ {
 
     public void setPlot(String plot) {
         this.plot = plot;
-    }}
+    }
 
+    public String getTotalSeasons() {
+        return totalSeasons;
+    }
+
+    public void setTotalSeasons(String totalSeasons) {
+        this.totalSeasons = totalSeasons;
+    }
+    //    private ArrayList<Season> seasons; TO-DO
+
+
+
+
+}
