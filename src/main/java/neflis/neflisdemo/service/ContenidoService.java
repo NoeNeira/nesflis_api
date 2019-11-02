@@ -3,6 +3,7 @@ package neflis.neflisdemo.service;
 
 import neflis.neflisdemo.model.Contenido;
 import neflis.neflisdemo.model.ContenidoApi;
+import neflis.neflisdemo.model.SeasonApi;
 import neflis.neflisdemo.persistance.ContenidoStorage;
 import neflis.neflisdemo.util.CustomObjectMapper;
 import neflis.neflisdemo.util.Util;
@@ -22,13 +23,11 @@ public class ContenidoService {
     public ContenidoStorage contenidoStorage;
     private List<Contenido> contentsList;
     private List<Contenido> contenidos;
-    private SerieService serieService;
-    private  MovieService movieService;
+
 
     public ContenidoService(ContenidoStorage contenidoStorage) {
         this.contenidoStorage = contenidoStorage;
     }
-
     public void contenidosTotales(){
         if(this.contenidos == null){
             this.contenidos= cargarContenidosIniciales();
@@ -39,8 +38,7 @@ public class ContenidoService {
             return contenidos;
         } else {*/
             return cargarContenidosIniciales().stream().filter(c -> c.getTitle().equals(title)).collect(Collectors.toList()
-            );
-        }
+            ); }
 
     public List<Contenido> cargarContenidosIniciales() {
         List<Contenido> contenidoTotal= new ArrayList<>();
@@ -51,10 +49,6 @@ public class ContenidoService {
         Contenido c = getContenido(movie1URL);
         Contenido d = getContenido(movie2URL);
         Contenido e = getContenido(movie3URL);
-
-        contenidoTotal.add(c);
-        contenidoTotal.add(d);
-        contenidoTotal.add(e);
 
         String serie1 = Util.URL_API + "?t=breaking+bad&apikey=" + Util.API_KEY;
         String serie2 = Util.URL_API + "?t=stranger+things&apikey=" + Util.API_KEY;

@@ -7,7 +7,7 @@ import neflis.neflisdemo.util.Sha1;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_NULL) //Para que el metodo no traiga los null
 public class Contenido implements Serializable {
 
     private String id;
@@ -18,10 +18,18 @@ public class Contenido implements Serializable {
     private String director;
     private String actors;
     private String plot;
-    /*private SeasonApi seasons;
-    private EpisodeApi episodes;
+    private SeasonApi seasons;
+    /*private EpisodeApi episodes;
     private MovieApi movie;
     private SerieApi serie;*/
+
+    public SeasonApi getSeasons() {
+        return seasons;
+    }
+
+    public void setSeasons(SeasonApi seasons) {
+        this.seasons = seasons;
+    }
 
     private String totalSeasons = null;
 
@@ -41,7 +49,7 @@ public class Contenido implements Serializable {
     }
     public String getId() {
         return Sha1.sha1(this.toString());
-    }
+    } // Sha aplicado al objeto
 
     public void setId(String id) {
         this.id = id;

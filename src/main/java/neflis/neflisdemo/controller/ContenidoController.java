@@ -2,6 +2,7 @@ package neflis.neflisdemo.controller;
 
 import neflis.neflisdemo.model.Contenido;
 import neflis.neflisdemo.model.ContenidoApi;
+import neflis.neflisdemo.model.SeasonApi;
 import neflis.neflisdemo.service.ContenidoService;
 import neflis.neflisdemo.service.SerieService;
 import org.springframework.web.bind.annotation.*;
@@ -12,18 +13,25 @@ import java.util.List;
 @RestController
 public class ContenidoController {
     private ContenidoService contenidoService;
-    public ContenidoController(ContenidoService contenidoService){
-        this.contenidoService=contenidoService;
+
+    public ContenidoController(ContenidoService contenidoService) {
+        this.contenidoService = contenidoService;
     }
 
    /* @GetMapping("/contents")
     public List<Contenido> contents(){
         return contenidoService.cargarContenidosIniciales();
     }*/
+
     @GetMapping("/contents")
-    public List<Contenido> contents(@RequestParam(value= "title", required = false)String title){
+    public List<Contenido> contents(@RequestParam(value = "title", required = false) String title) {
         return contenidoService.contenidoPorTitulo(title);
-}}
+    }
+}
+    /*@GetMapping("/contents")
+    public List<SeasonApi> seasonApis (@RequestParam(value= "season", required = false) SeasonApi season){
+        return contenidoService.contenidoPorSeason(season);
+    }*/
 
     /*@PostMapping("/contents")
     public ContenidoApi addContent(@RequestBody ContenidoApi contents){

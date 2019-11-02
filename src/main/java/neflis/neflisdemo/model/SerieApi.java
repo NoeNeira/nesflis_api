@@ -1,9 +1,10 @@
 package neflis.neflisdemo.model;
 
 
+import java.io.Serializable;
 import java.util.List;
+public class SerieApi implements Serializable {
 
-public class SerieApi extends Contenido {
     private String id;
     private String title;
     private String year;
@@ -13,25 +14,18 @@ public class SerieApi extends Contenido {
     private String actors;
     private String plot;
     //private SeasonApi seasons;
-    private List<SeasonApi> seasons;
-    private String totalseasons;
+    private String season;
+   // private SeasonApi seasons;
+    private String totalSeasons;
+    private List<EpisodeApi> episodes;
 
-   /* public SerieApi(String id, String title, String year, String runtime, String genre, String director, String actors, String plot, SeasonApi seasons, String totalseasons) {
-        super(id, title, year, runtime, genre, director, actors, plot, seasons);
-        //this.seasons=seasons;
-        this.totalseasons = totalseasons;
+    public SerieApi(){}
+    public SerieApi(String title, String season, String totalSeasons, List<EpisodeApi> episodes){
+        this.title=title;
+        this.season=season;
+        this.totalSeasons=totalSeasons;
+        this.episodes=episodes;
     }
-    /*public SerieApi(int id, String title, String year, String runtime, String genre, String director, String actors, String plot, String totalseasons) {
-        this.id = id;
-        this.title = title;
-        this.year = year;
-        this.runtime = runtime;
-        this.genre = genre;
-        this.director = director;
-        this.actors = actors;
-        this.plot = plot;
-       // this.seasons = seasons;
-        this.totalseasons = totalseasons;}
 
     public String getId() {
         return id;
@@ -49,67 +43,34 @@ public class SerieApi extends Contenido {
         this.title = title;
     }
 
-    public String getYear() {
-        return year;
+    public String getSeason() {
+        return season;
     }
 
-    public void setYear(String year) {
-        this.year = year;
+    public void setSeason(String season) {
+        this.season = season;
     }
 
-    public String getRuntime() {
-        return runtime;
+    public String getTotalSeasons() {
+        return totalSeasons;
     }
 
-    public void setRuntime(String runtime) {
-        this.runtime = runtime;
+    public void setTotalSeasons(String totalSeasons) {
+        this.totalSeasons = totalSeasons;
     }
 
-    public String getGenre() {
-        return genre;
+    public List<EpisodeApi> getEpisodes() {
+        return episodes;
     }
 
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
-    public String getDirector() {
-        return director;
-    }
-
-    public void setDirector(String director) {
-        this.director = director;
-    }
-
-    public String getActors() {
-        return actors;
-    }
-
-    public void setActors(String actors) {
-        this.actors = actors;
-    }
-
-    public String getPlot() {
-        return plot;
-    }
-
-    public void setPlot(String plot) {
-        this.plot = plot;
-    } */
-
-    /*public List<SeasonApi> getSeasons() {
-        return seasons;
-    }
-
-    public void setSeasons(List<SeasonApi> seasons) {
-        this.seasons = seasons;
-    }
-*/
-    public String getTotalseasons() {
-        return totalseasons;
-    }
-
-    public void setTotalseasons(String totalseasons) {
-        this.totalseasons = totalseasons;
+    public void setEpisodes(List<EpisodeApi> episodes) {
+        this.episodes = episodes;
     }
 }
+
+   /* public SerieApi(String id, String title, String year, String runtime, String genre, String director, String actors, String plot, SeasonApi seasons, String totalseasons) {
+        super(id, title, year, runtime, genre, director, actors, plot, seasons);
+        //this.seasons=seasons;
+        this.totalseasons = totalseasons;
+    String genre, String director, String actors, String plot, String totalseasons)
+}*/
