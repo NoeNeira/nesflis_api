@@ -18,35 +18,17 @@ public class ContenidoController {
         this.contenidoService = contenidoService;
     }
 
-   /* @GetMapping("/contents")
+    @GetMapping("/contents") //Trae todos los contenidos, series y peliculas
     public List<Contenido> contents(){
         return contenidoService.cargarContenidosIniciales();
-    }*/
+    } //http://localhost:8080/contents
 
-    @GetMapping("/contents")
+    @GetMapping("/contentsTitulo") //Trae el contenido por titulo
     public List<Contenido> contents(@RequestParam(value = "title", required = false) String title) {
         return contenidoService.contenidoPorTitulo(title);
-    }
+    }// http://localhost:8080/contentsTitulo?title=You
 }
-    /*@GetMapping("/contents")
-    public List<SeasonApi> seasonApis (@RequestParam(value= "season", required = false) SeasonApi season){
-        return contenidoService.contenidoPorSeason(season);
-    }*/
 
     /*@PostMapping("/contents")
     public ContenidoApi addContent(@RequestBody ContenidoApi contents){
-        return contenidoService.agregarContents(contents);}}
-
-    @RequestMapping(value = "/contents", produces = MediaType.APPLICATION_JSON_VALUE,  method = RequestMethod.GET)
-    public String getAllContentsJSON (Model model)
-    {
-        model.addAttribute("contents", contenidoService.getContentsList() );
-        return "jsonTemplate";
-    }
-    @RequestMapping(value = "/Contents", method = RequestMethod.POST)
-    public ResponseEntity<String> createEmployee(@RequestBody ContenidoApi contents)
-    {
-        System.out.println(contents);
-        return new ResponseEntity(HttpStatus.CREATED);
-    }
-}*/
+        return contenidoService.agregarContents(contents);}}*/

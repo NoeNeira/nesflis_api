@@ -2,8 +2,6 @@ package neflis.neflisdemo.service;
 
 
 import neflis.neflisdemo.model.Contenido;
-import neflis.neflisdemo.model.ContenidoApi;
-import neflis.neflisdemo.model.SeasonApi;
 import neflis.neflisdemo.persistance.ContenidoStorage;
 import neflis.neflisdemo.util.CustomObjectMapper;
 import neflis.neflisdemo.util.Util;
@@ -32,7 +30,7 @@ public class ContenidoService {
         if(this.contenidos == null){
             this.contenidos= cargarContenidosIniciales();
     }}
-    public List<Contenido> contenidoPorTitulo(String title) {
+    public List<Contenido> contenidoPorTitulo(String title) { //Contenidos por titulo
         //contenidos=contenidoStorage.contents();
         /*if (title == null) {
             return contenidos;
@@ -40,7 +38,7 @@ public class ContenidoService {
             return cargarContenidosIniciales().stream().filter(c -> c.getTitle().equals(title)).collect(Collectors.toList()
             ); }
 
-    public List<Contenido> cargarContenidosIniciales() {
+    public List<Contenido> cargarContenidosIniciales() { // Contenidos de series y peliculas
         List<Contenido> contenidoTotal= new ArrayList<>();
         String movie1URL = Util.URL_API + "?t=brave+heart&apikey=" + Util.API_KEY;
         String movie2URL = Util.URL_API + "?t=titanic&apikey=" + Util.API_KEY;

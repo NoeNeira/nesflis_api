@@ -19,19 +19,7 @@ public class Contenido implements Serializable {
     private String actors;
     private String plot;
     private SeasonApi seasons;
-    /*private EpisodeApi episodes;
-    private MovieApi movie;
-    private SerieApi serie;*/
-
-    public SeasonApi getSeasons() {
-        return seasons;
-    }
-
-    public void setSeasons(SeasonApi seasons) {
-        this.seasons = seasons;
-    }
-
-    private String totalSeasons = null;
+    private String totalSeasons = null; //null porq solo esta en series, no en peliculas.
 
     public Contenido(){}
 
@@ -54,66 +42,57 @@ public class Contenido implements Serializable {
     public void setId(String id) {
         this.id = id;
     }
-
-
     public String getTitle() {
         return title;
     }
-
     public void setTitle(String title) {
         this.title = title;
     }
-
     public String getYear() {
         return year;
     }
-
     public void setYear(String year) {
         this.year = year;
     }
-
     public String getRuntime() {
         return runtime;
     }
-
     public void setRuntime(String runtime) {
         this.runtime = runtime;
     }
-
     public String getGenre() {
         return genre;
     }
-
     public void setGenre(String genre) {
         this.genre = genre;
     }
-
     public String getDirector() {
         return director;
     }
-
     public void setDirector(String director) {
         this.director = director;
     }
-
     public String getActors() {
         return actors;
     }
-
     public void setActors(String actors) {
         this.actors = actors;
     }
-
     public String getPlot() {
         return plot;
     }
-
     public void setPlot(String plot) {
         this.plot = plot;
     }
-
     public String getTotalSeasons() {
         return totalSeasons;
+    }
+    public SeasonApi getSeasons() {
+        return seasons;
+    }
+
+    public void setSeasons(SeasonApi seasons) {
+        this.seasons = seasons;
     }
 
     public void setTotalSeasons(String totalSeasons) {

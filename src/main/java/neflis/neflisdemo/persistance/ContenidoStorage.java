@@ -5,7 +5,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import neflis.neflisdemo.model.Contenido;
-import neflis.neflisdemo.model.ContenidoApi;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 

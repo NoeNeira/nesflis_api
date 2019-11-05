@@ -2,27 +2,99 @@ package neflis.neflisdemo.model;
 
 import neflis.neflisdemo.util.Sha1;
 
-import javax.print.DocFlavor;
+import java.io.Serializable;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public class SeasonApi{
+public class SeasonApi implements Serializable {
     private String id;
-    private String number;
-    private String runtime;
-    private EpisodeApi episode;
+    //private String number;
+    //private String runtime;
+    //private List<EpisodeApi> episode;
     private String number_of_episodes;
+    private String title;
+    private String season;
+    private String totalSeasons;
+    private List<EpisodeApi> episodes;
+    private String episode;
+    private SerieApi serieApi;
+    public EpisodeApi episodeApi;
 
-    public SeasonApi(String id, String number, String runtime, EpisodeApi episode, String number_of_episodes) {
-        this.id = id;
-        this.number = number;
-        this.runtime = runtime;
-        this.episode = episode;
-        this.number_of_episodes = number_of_episodes;
+    public SeasonApi(){}
+
+    public SeasonApi(String title, String season, String totalSeasons, List<EpisodeApi> episodes){
+        this.title=title;
+        this.season=season;
+        this.totalSeasons=totalSeasons;
+        this.episodes=episodes;
     }
+
+    public String getTitle() {
+        return title;
+    }
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getSeason() {
+        return season;
+    }
+
+    public void setSeason(String season) {
+        this.season = season;
+    }
+
+    public String getTotalSeasons() {
+        return totalSeasons;
+    }
+
+    public void setTotalSeasons(String totalSeasons) {
+        this.totalSeasons = totalSeasons;
+    }
+
+    public void setEpisode(String episode) {
+        this.episode = episode;
+    }
+
+    public String getEpisode() {
+        return episode;
+    }
+
     public String getId() {
         return  Sha1.sha1(this.toString());
     }
     public void setId(String id) {
         this.id = id;
+    }
+
+    public List<EpisodeApi> getEpisodes() {
+        return episodes;
+    }
+    public String getNumber_of_episodes() {
+        return number_of_episodes;
+    }
+
+    public void setNumber_of_episodes(String number_of_episodes) {
+        this.number_of_episodes = number_of_episodes;
+    }
+
+    public SerieApi getSerieApi() {
+        return serieApi;
+    }
+
+    public void setSerieApi(SerieApi serieApi) {
+        this.serieApi = serieApi;
+    }
+
+    public void setEpisode(List<EpisodeApi> episodes) {
+        this.episodes = episodes;
+    }
+/*    public String getNumber_of_episodes() {
+        return number_of_episodes;
+    }
+
+    public void setNumber_of_episodes(String number_of_episodes) {
+        this.number_of_episodes = number_of_episodes;
     }
 
     public String getNumber() {
@@ -41,11 +113,11 @@ public class SeasonApi{
         this.runtime = runtime;
     }
 
-    public EpisodeApi getEpisode() {
+    public List<EpisodeApi> getEpisode() {
         return episode;
     }
 
-    public void setEpisode(EpisodeApi episode) {
+    public void setEpisode(List<EpisodeApi> episode) {
         this.episode = episode;
     }
 
@@ -55,6 +127,6 @@ public class SeasonApi{
 
     public void setNumber_of_episodes(String number_of_episodes) {
         this.number_of_episodes = number_of_episodes;
-    }
+    }*/
 
 }
