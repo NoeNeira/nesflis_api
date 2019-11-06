@@ -1,14 +1,17 @@
 package neflis.neflisdemo.utils;
 
+import neflis.neflisdemo.model.ContenidoApi;
+
 import java.math.BigInteger;
 import java.security.MessageDigest;
 
 
 
 public class Sha1 {
-    public String generarId() {
+    private ContenidoApi contenido;
+    public String generarId(ContenidoApi contenido) {
 
-        String value = "this is a test";
+        String value = contenido.toString();
 
         String sha1 = "";
 

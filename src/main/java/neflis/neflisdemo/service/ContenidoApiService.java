@@ -104,16 +104,7 @@ public class ContenidoApiService {
         this.contentsList = contentsList;
     }
 
-    //***********************************************************************************************
-    public Sha1 miSha;
 
-    public String agregarId(){
-    String miShaEnString = miSha.toString();
-    contenido.setId(miShaEnString);
-    return contenido.getId();
-
-
-}
 
 
 }

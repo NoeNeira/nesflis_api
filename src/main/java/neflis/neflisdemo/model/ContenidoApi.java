@@ -1,5 +1,6 @@
 package neflis.neflisdemo.model;
 
+import neflis.Contenido;
 import neflis.neflisdemo.utils.Sha1;
 
 import java.io.Serializable;
@@ -13,9 +14,8 @@ public class ContenidoApi implements Serializable {
     private String directors;
     private String actors;
     private String plot;
-    private String season;
+    private String season = null;
 
-    protected Sha1 sha;
 
    // private List<Pelicula> peliculas;
     //private List<Serie> series;
@@ -46,7 +46,7 @@ public class ContenidoApi implements Serializable {
     }
 
     public String getId() {
-        return sha.generarId();
+        return id;
     }
 
     public void setId(String id) {
