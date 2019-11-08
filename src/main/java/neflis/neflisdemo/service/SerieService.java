@@ -1,6 +1,7 @@
 package neflis.neflisdemo.service;
 
 
+import neflis.neflisdemo.model.Contenido;
 import neflis.neflisdemo.model.EpisodeApi;
 import neflis.neflisdemo.model.SerieApi;
 import neflis.neflisdemo.util.CustomObjectMapper;
@@ -10,6 +11,7 @@ import okhttp3.Call;
 
 import okhttp3.Request;
 import okhttp3.Response;
+import org.graalvm.compiler.lir.phases.LIRPhase;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -20,15 +22,28 @@ import java.util.stream.Collectors;
 @Service
 public class SerieService {
    private List<SerieApi> serieList;
-   private List<EpisodeApi> episode;
+   private Contenido contenido;
+   private List<EpisodeApi> episodes;
 
     public void SerieService(){
         if(this.serieList == null){
             this.serieList= cargarContenidos();}}
 
-    //public Integer cortarString(){
-   // public List<SerieApi> duracionSerie(){cargarContenidos().stream().filter(s->s.getSeason().get)}
+    public Integer episodioCortar(){
+        return episodes.size();
+    }
+    public Integer duracionSerie(String title, String season, List<EpisodeApi> episodes){
+        return cantidadEpisodios(title, season, episodes)*cortarRuntime();}
 
+    public Integer cortarRuntime(){ return Integer.valueOf(contenido.getRuntime().split("\\s")[0]);}
+
+    public Integer cantidadEpisodios(String title, String season, List<EpisodeApi> episodes){
+        return contenidoPorEpisode(title, season, episodes).size();
+      }
+
+    public List<SerieApi> contenidoPorEpisode(String title, String season, List<EpisodeApi>episodes){ //Contenidos por titulo filtrados por temporada
+        return contenidoPorSeason(title, season).stream().filter(s->s.getEpisodes().equals(episodes)).collect(Collectors.toList());
+    }
     public List<SerieApi> contenidoPorSeason(String title, String season){ //Contenidos por titulo filtrados por temporada
         return contenidoPorTitulo(title).stream().filter(s->s.getSeason().equals(season)).collect(Collectors.toList());
     }

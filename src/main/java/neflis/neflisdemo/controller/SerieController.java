@@ -21,15 +21,15 @@ public class SerieController {
     }
 
     @GetMapping("/contents/{title}") //Pido como parametro el titulo, y como request la temporada. Ok!!
-    public List<SerieApi> contenidoSerie(@PathVariable( value= "title") String title,
-                                  @RequestParam(value = "season", required = false) String season) {
+    public List<SerieApi> contenidoSerie(@PathVariable(value = "title") String title,
+                                         @RequestParam(value = "season", required = false) String season) {
         return serieService.contenidoPorSeason(title, season);
         //localhost:8080/contents/Breaking Bad?season=1
-    }}
-
+    }
+}
     /*@GetMapping("/contents/{title}/{season}")
     public List<SerieApi> contenidoSeriePorEpisode(@PathVariable( value= "title") String title,
                                                    @PathVariable(value= "season") String season,
-                                                   @RequestParam(value = "episode", required = false)String episode) {
+                                                   @RequestParam(value = "episode", required = false)List<String> episode) {
         return serieService.contenidoPorEpisodio(title, season, episode);
-    }*/
+    }}*/ 

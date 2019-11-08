@@ -21,8 +21,8 @@ public class EpisodeController {
     }
     @GetMapping("/contents/{title}/{season}")
     public List<EpisodeApi> episodiosSerie(@PathVariable( value= "title") String title,
-                                          @PathVariable(value= "season") String season,
-                                          @RequestParam(value = "episode", required = false) String episode) {
+                                           @PathVariable(value= "season") String season,
+                                           @RequestParam(value = "episode", required = false) String episode) {
         return episodeService.contenidoPorEpisodio(title, season, episode);
     }
     @GetMapping("/contentsEpisodio")
