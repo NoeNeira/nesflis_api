@@ -27,13 +27,12 @@ public class ContenidoController {
     public List<Contenido> contents(@RequestParam(value = "title", required = false) String title) {
         return contenidoService.contenidoPorTitulo(title);
     }// http://localhost:8080/contentsTitulo?title=You
-}
 
-   /* @GetMapping("/contentsRuntime/{genre}") //
-    public List<Contenido> contentss (@PathVariable(value = "genre") String genre,
-                                     @RequestParam(value = "runtime", required = false) String  runtime)
-        {return contenidoService.contenidoPorRuntime(genre, runtime);}}
-    */
+    @GetMapping("/contentsRuntime")
+    public Integer contentss (/*@PathVariable(value = "genre") String genre,
+                                     @RequestParam(value = "runtime", required = false) String  runtime)*/
+                                     @RequestParam(value = "genre", required = false) String  genre)
+        {return contenidoService.minVistosxGenero(genre);}}
 
     /*@PostMapping("/contents")
     public ContenidoApi addContent(@RequestBody ContenidoApi contents){

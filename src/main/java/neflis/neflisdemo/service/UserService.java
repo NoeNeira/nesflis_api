@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 @Service
 public class UserService  {
     protected List<UserApi> usersList;
+    public List<Contenido> contenidos;
     public ContenidoService contenidoService;
 
     public void UserService(){
@@ -32,31 +33,31 @@ public class UserService  {
                 .equals(id)).collect(Collectors.toList());
         }
     }
-     /*public Integer contenidoPorDuracion(String genre) { return
-        contenidosPorGenero(genre).stream().map(c->c.cortarRuntime()).reduce(0, Integer::sum);}*/
 
-    public List<UserApi> contenidosPorRuntime(String id, String runtime){
-        return usuariosPorIdContenidoVisto(id).stream().filter(u->u.getContenidos().equals(runtime)).collect(Collectors.toList());
+  /*  public List<UserApi> feature(){}
+    public List<UserApi> generoMasVisto(String genre, String runtime){
+        return contenidosVistosA().stream().filter()*/
+
+    /*public Integer minVistosxGenero(String genre, String runtime){return
+           contenidoPorRuntime(genre, runtime).stream().filter(c->c.getGenre()
+                    .equals( genre ) ).mapToInt( c-> Integer.parseInt(c.cortarRuntime()))
+                    .sum();}*/
+
+    public List<Contenido> contenidoPorRuntime(String title, String genre, String runtime){
+        return contenidoPorGenre(title, genre).stream().filter(c->c.getRuntime().equals(runtime)).collect(Collectors.toList());
     }
-    public List<UserApi> contenidosPorGenre(String id, List<Contenido> contenidos, String genre){
-        return  contenidosPorUser(id, contenidos).stream().filter(u->u.getContenidos().equals(genre)).collect(Collectors.toList());
+    public List<Contenido> contenidoPorGenre(String title, String genre){
+        return contenidoPorTitle(title).stream().filter(c->c.getRuntime().equals(genre)).collect(Collectors.toList());
     }
-    public List<UserApi> contenidosPorUser(String id, List<Contenido> contenidos) {
-        return usuariosPorIdContenidoVisto(id).stream().filter(u -> u.getContenidos().equals(contenidos)).collect(Collectors.toList());
-    }
-    public List<UserApi> contenidosUser(String id){
-        List<Contenido> contenidos = contenidosVistosA();
-        return usuariosPorIdContenidoVisto(id).stream().filter(u->u.getContenidos().equals(contenidos)).collect(Collectors.toList());
-    }
-    public List<Contenido> contenidoPorRuntime(String genre, String runtime){
-        return contenidoPorGenre(genre).stream().filter(c->c.getRuntime().equals(runtime)).collect(Collectors.toList());
-    }
-    public List<Contenido> contenidoPorGenre( String genre) { //Contenidos por genero
+    public List<Contenido> contenidoRuntime (String title, String runtime ){ return
+        contenidoPorTitle(title).stream().filter(c->c.getRuntime().equals(runtime)).collect(Collectors.toList());}
+
+    public List<Contenido> contenidoPorTitle( String title) { //Contenidos por genero
         //contenidos=contenidoStorage.contents();
-        if (genre == null) {
+        if (title == null) {
             return contenidosVistosA();
         } else {
-        return contenidosVistosA().stream().filter(c -> c.getGenre().equals(genre)).collect(Collectors.toList()
+        return contenidosVistosA().stream().filter(c -> c.getGenre().equals(title)).collect(Collectors.toList()
         ); }}
 
     public List<UserApi> usuarios() {
@@ -71,6 +72,7 @@ public class UserService  {
         users.add(nadia);
 
         yaz.setContenidos(contenidosVistosA());
+
 
         //yaz.setContenidoRecomendado(contenidosNuevos());
 
@@ -124,9 +126,9 @@ public class UserService  {
       contenidoList.add(a);
       contenidoList.add(b);
       contenidoList.add(c);
-      a.getRuntime(); a.getGenre();
-      b.getRuntime(); b.getGenre();
-      c.getRuntime(); c.getGenre();
+        /*a.getRuntime(); a.getGenre();
+        b.getRuntime(); b.getGenre();
+        c.getRuntime(); c.getGenre();*/
       return contenidoList;
 
     }

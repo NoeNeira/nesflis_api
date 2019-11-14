@@ -65,7 +65,7 @@ public class Contenido implements Serializable {
         return  genre;
     }
 
-    public String getOneGenre(){return String.valueOf(this.getGenre().split("\\s")[0]);}
+    public String getOneGenre(){return String.valueOf(this.getGenre().split("\\s")[1]);}
 
     public void setGenre(String genre) {
         this.genre = genre;
@@ -111,4 +111,4 @@ public class Contenido implements Serializable {
         this.contenidos = contenidos;
     }
 
-    public String cortarRuntime(){ return String.valueOf(this.getRuntime().split("\\s")[0]);}}
+    public String cortarRuntime(){ return this.getRuntime().split("\\s")[0];}}

@@ -30,6 +30,12 @@ public class ContenidoService {
         if(this.contenidos == null){
             this.contenidos= cargarContenidosIniciales();
     }}
+
+    public Integer minVistosxGenero(String genre){return
+            cargarContenidosIniciales().stream().filter( c->c.getGenre()
+                    .equals( genre ) ).mapToInt( c-> Integer.parseInt(c.cortarRuntime()))
+                    .sum();}
+
     public List<Contenido> contenidoPorRuntime( String genre, String runtime) {
         return contenidoPorGenre(genre).stream().filter(c->c.cortarRuntime().equals(runtime)).collect(Collectors.toList());}
 
@@ -98,51 +104,6 @@ public class ContenidoService {
         }
 
     }
-    /*private MovieApi getContenidoMovie(String movie){
-        OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder()
-                .url(movie)
-                .get()
-                .build();
-
-        Call call = client.newCall(request);
-        Response response = null;
-        try {
-            response = call.execute();
-            String json = response.body().string();
-
-            CustomObjectMapper om =  new CustomObjectMapper();
-            MovieApi c = om.readValue(json,MovieApi.class);
-            return c;
-        } catch (IOException e) {
-            //log + tirar la excepcion
-            e.printStackTrace();
-            throw new RuntimeException("There was an error reading content", e);
-
-    }
-    /*
-    private Contenido getMovie(String movie){
-        OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder()
-                .url(movie)
-                .get()
-                .build();
-
-        Call call = client.newCall(request);
-        Response response = null;
-        try {
-            response = call.execute();
-            String json = response.body().string();
-
-            CustomObjectMapper om =  new CustomObjectMapper();
-            Contenido c = om.readValue(json,Contenido.class);
-            return c;
-        } catch (IOException e) {
-            //log + tirar la excepcion
-            e.printStackTrace();
-            throw new RuntimeException("There was an error reading content", e);
-        }
-    }*/
     public List<Contenido> getContentsList() {
         contentsList = contenidoStorage.contents();
      return contentsList;
