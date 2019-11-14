@@ -19,7 +19,7 @@ public class ContenidoController {
     }
 
     @GetMapping("/contents") //Trae todos los contenidos, series y peliculas
-    public List<Contenido> contents(){
+    public List<Contenido> contents() {
         return contenidoService.cargarContenidosIniciales();
     } //http://localhost:8080/contents
 
@@ -28,6 +28,22 @@ public class ContenidoController {
         return contenidoService.contenidoPorTitulo(title);
     }// http://localhost:8080/contentsTitulo?title=You
 }
+
+   /* @GetMapping("/contentsRuntime/{genre}") //
+    public List<Contenido> contentss (@PathVariable(value = "genre") String genre,
+                                     @RequestParam(value = "runtime", required = false) String  runtime)
+        {return contenidoService.contenidoPorRuntime(genre, runtime);}}
+    */
+
+    /*@PostMapping("/contents")
+    public ContenidoApi addContent(@RequestBody ContenidoApi contents){
+        return contenidoService.agregarC
+
+    @GetMapping("/contentsRuntime") //Trae el contenido por titulo
+    public List<Contenido> contentss (@RequestParam(value = "runtime", required = false) String runtime) {
+        return contenidoService.contenidoPorRuntime(runtime);
+}}
+
 
     /*@PostMapping("/contents")
     public ContenidoApi addContent(@RequestBody ContenidoApi contents){

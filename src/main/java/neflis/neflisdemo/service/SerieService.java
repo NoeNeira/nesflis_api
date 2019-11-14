@@ -11,7 +11,6 @@ import okhttp3.Call;
 
 import okhttp3.Request;
 import okhttp3.Response;
-import org.graalvm.compiler.lir.phases.LIRPhase;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;

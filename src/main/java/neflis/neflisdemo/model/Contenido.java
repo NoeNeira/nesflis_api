@@ -20,6 +20,7 @@ public class Contenido implements Serializable {
     private String plot;
     private SeasonApi seasons;
     private String totalSeasons = null; //null porq solo esta en series, no en peliculas.
+    private List<Contenido> contenidos;
 
     public Contenido(){}
 
@@ -61,8 +62,11 @@ public class Contenido implements Serializable {
         this.runtime = runtime;
     }
     public String getGenre() {
-        return genre;
+        return  genre;
     }
+
+    public String getOneGenre(){return String.valueOf(this.getGenre().split("\\s")[0]);}
+
     public void setGenre(String genre) {
         this.genre = genre;
     }
@@ -98,9 +102,13 @@ public class Contenido implements Serializable {
     public void setTotalSeasons(String totalSeasons) {
         this.totalSeasons = totalSeasons;
     }
-    //    private ArrayList<Season> seasons; TO-DO
 
+    public List<Contenido> getContenidos() {
+        return contenidos;
+    }
 
+    public void setContenidos(List<Contenido> contenidos) {
+        this.contenidos = contenidos;
+    }
 
-
-}
+    public String cortarRuntime(){ return String.valueOf(this.getRuntime().split("\\s")[0]);}}

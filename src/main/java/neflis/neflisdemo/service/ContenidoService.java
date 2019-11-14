@@ -30,13 +30,19 @@ public class ContenidoService {
         if(this.contenidos == null){
             this.contenidos= cargarContenidosIniciales();
     }}
+    public List<Contenido> contenidoPorRuntime( String genre, String runtime) {
+        return contenidoPorGenre(genre).stream().filter(c->c.cortarRuntime().equals(runtime)).collect(Collectors.toList());}
+
+    public List<Contenido> contenidoPorGenre(String genre){
+        return cargarContenidosIniciales().stream().filter(c->c.getGenre().equals(genre)).collect(Collectors.toList());
+    }
     public List<Contenido> contenidoPorTitulo(String title) { //Contenidos por titulo
         //contenidos=contenidoStorage.contents();
-        /*if (title == null) {
-            return contenidos;
-        } else {*/
+        if (title == null) {
+            return cargarContenidosIniciales();
+        } else {
             return cargarContenidosIniciales().stream().filter(c -> c.getTitle().equals(title)).collect(Collectors.toList()
-            ); }
+            ); }}
 
     public List<Contenido> cargarContenidosIniciales() { // Contenidos de series y peliculas
         List<Contenido> contenidoTotal= new ArrayList<>();
@@ -47,6 +53,9 @@ public class ContenidoService {
         Contenido c = getContenido(movie1URL);
         Contenido d = getContenido(movie2URL);
         Contenido e = getContenido(movie3URL);
+       /* c.getRuntime(); c.cortarRuntime(); c.getGenre();
+        d.getRuntime(); d.cortarRuntime(); d.getGenre();
+        e.getRuntime(); e.cortarRuntime(); e.getGenre();*/
 
         String serie1 = Util.URL_API + "?t=breaking+bad&apikey=" + Util.API_KEY;
         String serie2 = Util.URL_API + "?t=stranger+things&apikey=" + Util.API_KEY;
