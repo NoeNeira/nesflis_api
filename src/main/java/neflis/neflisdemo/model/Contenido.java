@@ -55,6 +55,7 @@ public class Contenido implements Serializable {
     public void setYear(String year) {
         this.year = year;
     }
+
     public String getRuntime() {
         return runtime;
     }
@@ -65,7 +66,7 @@ public class Contenido implements Serializable {
         return  genre;
     }
 
-    public String getOneGenre(){return String.valueOf(this.getGenre().split("\\s")[1]);}
+    //public String getOneGenre(){return String.valueOf(this.getGenre().split(",")[1]);}
 
     public void setGenre(String genre) {
         this.genre = genre;
@@ -111,4 +112,4 @@ public class Contenido implements Serializable {
         this.contenidos = contenidos;
     }
 
-    public String cortarRuntime(){ return this.getRuntime().split("\\s")[0];}}
+    public Integer cortarRuntime(){ return Integer.valueOf(this.getRuntime().split("\\s")[0]);}}

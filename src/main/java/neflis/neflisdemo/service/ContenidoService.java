@@ -31,9 +31,10 @@ public class ContenidoService {
             this.contenidos= cargarContenidosIniciales();
     }}
 
+
     public Integer minVistosxGenero(String genre){return
             cargarContenidosIniciales().stream().filter( c->c.getGenre()
-                    .equals( genre ) ).mapToInt( c-> Integer.parseInt(c.cortarRuntime()))
+                    .equals( genre ) ).mapToInt( c-> c.cortarRuntime())
                     .sum();}
 
     public List<Contenido> contenidoPorRuntime( String genre, String runtime) {

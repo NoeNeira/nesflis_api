@@ -1,10 +1,7 @@
 package neflis.neflisdemo.controller;
 
 import neflis.neflisdemo.model.Contenido;
-import neflis.neflisdemo.model.ContenidoApi;
-import neflis.neflisdemo.model.SeasonApi;
 import neflis.neflisdemo.service.ContenidoService;
-import neflis.neflisdemo.service.SerieService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,15 +25,18 @@ public class ContenidoController {
         return contenidoService.contenidoPorTitulo(title);
     }// http://localhost:8080/contentsTitulo?title=You
 
-    @GetMapping("/contentsRuntime")
-    public Integer contentss (/*@PathVariable(value = "genre") String genre,
-                                     @RequestParam(value = "runtime", required = false) String  runtime)*/
-                                     @RequestParam(value = "genre", required = false) String  genre)
-        {return contenidoService.minVistosxGenero(genre);}}
+    @GetMapping("/contentsRuntime/{genre}")
+    public List<Contenido> contentss (@PathVariable(value = "genre") String genre,
+                                      @RequestParam(value = "runtime", required = false) String  runtime)
+                                    // @RequestParam(value = "genre", required = false) String  genre)
+        {return contenidoService.contenidoPorRuntime(genre, runtime);}}
 
     /*@PostMapping("/contents")
     public ContenidoApi addContent(@RequestBody ContenidoApi contents){
-        return contenidoService.agregarC
+        return contenidoService.agregarC public Integer minVistosxGenero(String genre){return
+            cargarContenidosIniciales().stream().filter( c->c.getGenre()
+                    .equals( genre ) ).mapToInt( c-> c.cortarRuntime())
+                    .sum();}
 
     @GetMapping("/contentsRuntime") //Trae el contenido por titulo
     public List<Contenido> contentss (@RequestParam(value = "runtime", required = false) String runtime) {

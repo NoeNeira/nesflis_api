@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
 
 @RestController
@@ -24,36 +25,30 @@ public class UserController {
         return userService.featureContents(genre);
     }*/
 
-    @GetMapping("/users")
+   /* @GetMapping("/users")
     public List<UserApi> usuarioPorId(@RequestParam(value = "id", required = false) String id) {
         return userService.usuariosPorIdContenidoVisto(id);
-    }//http://localhost:8080/users?id=1L
+    }//http://localhost:8080/users?id=1L*/
 
     /** Ejercicio 3**/
     @GetMapping("/users/{id}")
     public List<UserApi> usuarioContenido(@PathVariable(value = "id") String id,
                                           @RequestParam(value = "watched", required = false) String watched) {
-        return userService.usuariosPorIdContenidoVisto(id);
+        return userService.usuariosPorId(id);
     }  //http://localhost:8080/users/1L?watched
 
-    /*@GetMapping("/user/{id}/contenido")
-    public List<UserApi> contenidoGenre(@PathVariable(value = "id") String id,
-                                             @PathVariable(value="contenido") List<Contenido> contenidos,
-                                             @RequestParam(value = "genre", required = false) String genre) {
-        return userService.contenidosPorGenre(id,contenidos, genre);
-    }*/
-
-    @GetMapping("/user/{title}")
-    public List<Contenido> contenidoRuntimes (@PathVariable(value = "title") String title,
-                                              @RequestParam(value="runtime", required = false) String runtime)
+   /**Ejercicio2**/
+    @GetMapping("/user/{id}")
+    public List<UserApi> contenidoRuntimes (@PathVariable(value = "id") String id,
+                                              @RequestParam(value="featured", required = false) String featured)
                                        // @RequestParam(value = "genre") String genre)
-    { return userService.contenidoRuntime(title, runtime);}}
+    { return userService.usuariosPorIdContenidoRecomendado(id);}
 
-        /*@GetMapping("/user/{genre}")
-    public Integer contenidoGeneroFav(@PathVariable(value = "genre") String genre,
-                                            @RequestParam(value="runtime", required = false) String runtime)
-    // @RequestParam(value = "genre") String genre) {
-    {   return userService.minVistosxGenero(genre, runtime);
+    @GetMapping("/userr/{id}")
+    public List<UserApi> contenidoGeneroFav(@PathVariable(value = "id") String id,
+                                            @RequestParam(value="genre", required = false) String genre)
+
+    {   return userService.filtrarContenidoRecomendadoPor(id, genre);
 }}
     /*@GetMapping("users/{id}/feature")
     public List<UserApi> usuarioContenidoNuevo(@PathVariable(value = "id") String id) {
