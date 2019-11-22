@@ -2,24 +2,31 @@ package neflis.neflisdemo.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+@Entity
+@Table(name="users", uniqueConstraints = {@UniqueConstraint(columnNames={"username"})})
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class UserApi {
 
+
+public class UserApi  {
+    @Id
+    @GeneratedValue
     private String id;
     private String username;
+
+    @OneToMany(targetEntity= UserApi.class, mappedBy="contenidos", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
     private List<Contenido> contenidos;
-    public List<Contenido> contenidoVisto;
-    public List<Contenido> contenidoRecomendado;
-    public Contenido contenido;
+    @OneToMany(targetEntity= UserApi.class, mappedBy="contenidoRecomendado", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+    private List<Contenido> contenidoRecomendado;
+    private Contenido contenido;
 
-    public UserApi() {
-    }
-
+    public UserApi() {}
     public UserApi(String id, String username) {
         this.id = id;
         this.username = username;
@@ -59,11 +66,7 @@ public class UserApi {
     public List<Contenido> getContenidos() {
         return contenidos;
     }
-/*
-    public List<Contenido> contenidoRecomendados() {
-        return contenidoRecomendado.stream().filter(c -> c.getGenre().equals(generosqueVio())).collect(Collectors.toList());
-    }
-*/
+
     public List<String> generosqueVio(){
     return contenidos.stream().map( contenidoVisto -> contenidoVisto.getGenre())
             .distinct().collect( Collectors.toList());}

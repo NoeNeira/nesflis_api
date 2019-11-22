@@ -2,6 +2,8 @@ package neflis.neflisdemo.service;
 
 import neflis.neflisdemo.model.Contenido;
 import neflis.neflisdemo.model.UserApi;
+//import neflis.neflisdemo.persistance.UserRepository;
+import neflis.neflisdemo.persistance.UserRepository;
 import neflis.neflisdemo.util.CustomObjectMapper;
 import neflis.neflisdemo.util.Util;
 import okhttp3.Call;
@@ -18,9 +20,13 @@ import java.util.stream.Stream;
 
 @Service
 public class UserService  {
+    private UserRepository userRepository;
     protected List<UserApi> usersList;
     //public List<Contenido> contenidos;
     public ContenidoService contenidoService;
+
+    public UserService(UserRepository userRepository){
+        this.userRepository=userRepository;}
 
     public void UserService(){
         if(this.usersList == null){
@@ -35,18 +41,23 @@ public class UserService  {
 
     }
     public List<UserApi> usuariosPorIdContenidoRecomendado(String id){//Trae usuarios por id
+        //usersList=userRepository.findAll();
         if(id==null){
             return usuariosContenidoRecomendado() ;}
         else {return usuariosContenidoRecomendado().stream().filter(userApi -> userApi.getId()
                 .equals(id)).collect(Collectors.toList());
         }}
     public List<UserApi> usuariosPorId(String id){//Trae usuarios por id
+        usersList=userRepository.findAll();
         if(id==null){
         return usuarios() ;}
         else {return usuarios().stream().filter(userApi -> userApi.getId()
                 .equals(id)).collect(Collectors.toList());
         }
     }
+    /*public UserApi addUser (UserApi userApi){ return
+            userRepository.save(userApi);
+    }*/
     public List<UserApi> usuariosContenidoRecomendado(){
         List<UserApi> users = new ArrayList<>();
         UserApi yaz= new UserApi("1L", "yaz");
@@ -56,7 +67,7 @@ public class UserService  {
         users.add(yaz);
         users.add(noe);
         users.add(nadia);
-        yaz.setContenidoRecomendado(cargarContenidosQueNoVio());
+        //yaz.setContenidoRecomendado(cargarContenidosQueNoVio());
 
 
         return users; }

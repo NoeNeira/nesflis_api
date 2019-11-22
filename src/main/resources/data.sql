@@ -1,24 +1,14 @@
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
-  id INT AUTO_INCREMENT  PRIMARY KEY,
-  first_name VARCHAR(250) NOT NULL,
-  last_name VARCHAR(250) NOT NULL
+  id VARCHAR(250)  PRIMARY KEY,
+  username VARCHAR(250) NOT NULL,
 
 );
-CREATE TABLE newusers (
-  id INT AUTO_INCREMENT  PRIMARY KEY,
-  first_name VARCHAR(250) NOT NULL,
-  last_name VARCHAR(250) NOT NULL
-
-);
-
-INSERT INTO users (first_name, last_name) VALUES
-  ('Yazmin', 'Longas'),
-  ('Noelia', 'Neira'),
-  ('Nadia', 'Centanaro');
-
-
+INSERT INTO users (id, username) VALUES
+  ('1L','yaz'),
+  ('2L','noe'),
+  ('3L','nadia');
 
 CREATE TABLE series (
   id INT AUTO_INCREMENT  PRIMARY KEY,
@@ -26,10 +16,10 @@ CREATE TABLE series (
   title VARCHAR(250) NOT NULL
 );
 INSERT INTO series (id_user, title) VALUES
-  ('1','Breaking Bad'),
-  ('2','You'),
-  ('3','You'),
-  ('1','Strangers things');
+  ('1L','Breaking Bad'),
+  ('2L','You'),
+  ('3L','You'),
+  ('1L','Strangers things');
 
 CREATE TABLE movie (
   id INT AUTO_INCREMENT  PRIMARY KEY,
@@ -37,9 +27,9 @@ CREATE TABLE movie (
   title VARCHAR(250) NOT NULL,
 );
 INSERT INTO series (id_user,title) VALUES
-  ('1','Titanic'),
-  ('1','BraveHeart'),
-  ('2','Mask');
+  ('1L','Titanic'),
+  ('1L','BraveHeart'),
+  ('2L ','Mask');
 
 
 
