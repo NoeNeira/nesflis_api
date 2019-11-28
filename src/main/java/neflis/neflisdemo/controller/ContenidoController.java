@@ -29,8 +29,14 @@ public class ContenidoController {
     public List<Contenido> contentss (@PathVariable(value = "genre") String genre,
                                       @RequestParam(value = "runtime", required = false) String  runtime)
                                     // @RequestParam(value = "genre", required = false) String  genre)
-        {return contenidoService.contenidoPorRuntime(genre, runtime);}}
+        {return contenidoService.contenidoPorRuntime(genre, runtime);}
 
+
+    @PostMapping("/contents")
+    public Contenido addContents(@RequestBody Contenido contenido){
+        return
+                contenidoService.agregarContenido(contenido);}
+}
     /*@PostMapping("/contents")
     public ContenidoApi addContent(@RequestBody ContenidoApi contents){
         return contenidoService.agregarC public Integer minVistosxGenero(String genre){return

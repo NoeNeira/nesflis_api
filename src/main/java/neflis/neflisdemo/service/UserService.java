@@ -23,7 +23,7 @@ public class UserService  {
     private UserRepository userRepository;
     protected List<UserApi> usersList;
     //public List<Contenido> contenidos;
-    public ContenidoService contenidoService;
+    //public ContenidoService contenidoService;
 
     public UserService(UserRepository userRepository){
         this.userRepository=userRepository;}
@@ -32,7 +32,9 @@ public class UserService  {
         if(this.usersList == null){
             this.usersList= usuarios();}}
 
-
+    public UserApi agregarUser(UserApi user){ return
+            userRepository.save(user);
+    }
     public List<UserApi> filtrarContenidoRecomendadoPor(String id, String genre){
         return usuariosPorIdContenidoRecomendado(id).stream().filter(u->u.getGeneroPreferido().equals(generoMasVisto(id, genre))).collect(Collectors.toList());
     }
@@ -55,9 +57,6 @@ public class UserService  {
                 .equals(id)).collect(Collectors.toList());
         }
     }
-    /*public UserApi addUser (UserApi userApi){ return
-            userRepository.save(userApi);
-    }*/
     public List<UserApi> usuariosContenidoRecomendado(){
         List<UserApi> users = new ArrayList<>();
         UserApi yaz= new UserApi("1L", "yaz");
@@ -68,8 +67,6 @@ public class UserService  {
         users.add(noe);
         users.add(nadia);
         //yaz.setContenidoRecomendado(cargarContenidosQueNoVio());
-
-
         return users; }
 
     public List<UserApi> usuarios() {
@@ -140,6 +137,7 @@ public class UserService  {
             throw new RuntimeException("There was an error reading content", e);
         }
     }
+
 }
 
 
