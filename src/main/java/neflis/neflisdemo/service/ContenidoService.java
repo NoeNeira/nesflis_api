@@ -2,7 +2,7 @@ package neflis.neflisdemo.service;
 
 
 import neflis.neflisdemo.model.Contenido;
-import neflis.neflisdemo.persistance.ContenidoRepository;
+//import neflis.neflisdemo.persistance.ContenidoRepository;
 import neflis.neflisdemo.persistance.ContenidoStorage;
 import neflis.neflisdemo.util.CustomObjectMapper;
 import neflis.neflisdemo.util.Util;
@@ -22,20 +22,21 @@ public class ContenidoService {
     public ContenidoStorage contenidoStorage;
     private List<Contenido> contentsList;
     private List<Contenido> contenidos;
-    private ContenidoRepository contenidoRepository;
+    //private ContenidoRepository contenidoRepository;
 
-
-    public ContenidoService(ContenidoRepository contenidoRepository)
-    { this.contenidoRepository = contenidoRepository; }
+    public ContenidoService(ContenidoStorage contenidoStorage){
+        this.contenidoStorage=contenidoStorage;}
+    /*public ContenidoService(ContenidoRepository contenidoRepository)
+    { this.contenidoRepository = contenidoRepository; }*/
 
     public void contenidoService(){
         if(this.contenidos == null){
             this.contenidos= cargarContenidosIniciales();
     }}
 
-    public Contenido agregarContenido (Contenido contenido){ return
+    /*public Contenido agregarContenido (Contenido contenido){ return
             contenidoRepository.save(contenido);
-    }
+    }*/
 
     public Integer minVistosxGenero(String genre){return
             cargarContenidosIniciales().stream().filter( c->c.getGenre()
@@ -49,7 +50,7 @@ public class ContenidoService {
         return cargarContenidosIniciales().stream().filter(c->c.getGenre().equals(genre)).collect(Collectors.toList());
     }
     public List<Contenido> contenidoPorTitulo(String title) { //Contenidos por titulo
-        contenidos=contenidoRepository.findAll();
+        //contenidos=contenidoRepository.findAll();
         if (title == null) {
             return cargarContenidosIniciales();
         } else {

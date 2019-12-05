@@ -41,23 +41,9 @@ public class UserController {
     @GetMapping("/user/{id}")
     public List<UserApi> contenidoRuntimes (@PathVariable(value = "id") String id,
                                               @RequestParam(value="featured", required = false) String featured)
-                                       // @RequestParam(value = "genre") String genre)
-    { return userService.usuariosPorIdContenidoRecomendado(id);}
+    { return userService.usuariosPorIdContenidoRecomendado(id);}}
+        //http://localhost:8080/user/1L?featured
 
-    @GetMapping("/userr/{id}")
-    public List<UserApi> contenidoGeneroFav(@PathVariable(value = "id") String id,
-                                            @RequestParam(value="genre", required = false) String genre)
 
-    {   return userService.filtrarContenidoRecomendadoPor(id, genre);
-}}
-    /*@GetMapping("users/{id}/feature")
-    public List<UserApi> usuarioContenidoNuevo(@PathVariable(value = "id") String id) {
-        return userService.usuarioNuevoContenido(id);
-    }}
-    /*@GetMapping("users/{id}/nuevo2")
-    public List<UserApi> usuarioContenidoNuevo2(@PathVariable(value = "id") String id,
-                                               @RequestParam(value = "contenidoNuevo", required = false) String contenidoNuevo) {
-        return userService.usuariosPorId2(id, contenidoNuevo);
-    }}*/
 
 

@@ -3,7 +3,7 @@ package neflis.neflisdemo.service;
 import neflis.neflisdemo.model.Contenido;
 import neflis.neflisdemo.model.UserApi;
 //import neflis.neflisdemo.persistance.UserRepository;
-import neflis.neflisdemo.persistance.UserRepository;
+//import neflis.neflisdemo.persistance.UserRepository;
 import neflis.neflisdemo.util.CustomObjectMapper;
 import neflis.neflisdemo.util.Util;
 import okhttp3.Call;
@@ -14,49 +14,49 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Service
 public class UserService  {
-    private UserRepository userRepository;
+    //private UserRepository userRepository;
     protected List<UserApi> usersList;
     //public List<Contenido> contenidos;
     //public ContenidoService contenidoService;
 
-    public UserService(UserRepository userRepository){
-        this.userRepository=userRepository;}
+    //public UserService(UserStorage)
+    /*public UserService(UserRepository userRepository){
+        this.userRepository=userRepository;}*/
 
     public void UserService(){
         if(this.usersList == null){
             this.usersList= usuarios();}}
 
-    public UserApi agregarUser(UserApi user){ return
+    /*public UserApi agregarUser(UserApi user){ return
             userRepository.save(user);
-    }
-    public List<UserApi> filtrarContenidoRecomendadoPor(String id, String genre){
-        return usuariosPorIdContenidoRecomendado(id).stream().filter(u->u.getGeneroPreferido().equals(generoMasVisto(id, genre))).collect(Collectors.toList());
-    }
+    }*/
     public List<UserApi> generoMasVisto(String id, String genre){
         return usuariosPorId(id).stream().filter(u->u.generoPreferido().equals(genre)).collect(Collectors.toList());
-
     }
-    public List<UserApi> usuariosPorIdContenidoRecomendado(String id){//Trae usuarios por id
+    public List<UserApi> usuariosPorIdContenidoRecomendado(String id){ //Trae usuarios por id
         //usersList=userRepository.findAll();
         if(id==null){
             return usuariosContenidoRecomendado() ;}
         else {return usuariosContenidoRecomendado().stream().filter(userApi -> userApi.getId()
                 .equals(id)).collect(Collectors.toList());
         }}
+
     public List<UserApi> usuariosPorId(String id){//Trae usuarios por id
-        usersList=userRepository.findAll();
+        //usersList=userRepository.findAll();
         if(id==null){
         return usuarios() ;}
         else {return usuarios().stream().filter(userApi -> userApi.getId()
                 .equals(id)).collect(Collectors.toList());
         }
     }
+
     public List<UserApi> usuariosContenidoRecomendado(){
         List<UserApi> users = new ArrayList<>();
         UserApi yaz= new UserApi("1L", "yaz");
@@ -66,7 +66,8 @@ public class UserService  {
         users.add(yaz);
         users.add(noe);
         users.add(nadia);
-        //yaz.setContenidoRecomendado(cargarContenidosQueNoVio());
+        yaz.setContenidoRecomendado(cargarContenidosQueNoVio());
+
         return users; }
 
     public List<UserApi> usuarios() {

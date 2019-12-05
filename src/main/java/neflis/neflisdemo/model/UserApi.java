@@ -76,6 +76,9 @@ public class UserApi  {
                 .max(Comparator.comparing(g-> this.minVistosxGenero(g))).get();
 
     }
+    public List<Contenido> contenidosPorGenero(){
+        return contenidoRecomendado.stream().filter(c->c.getGenre().equals(generoPreferido())).collect(Collectors.toList());
+    }
     public List<Contenido> contenidoVistoDe(String genre){
         return contenidos.stream()
                 .filter(c -> c.getGenre().equals(genre))
