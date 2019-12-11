@@ -39,14 +39,6 @@ public class UsuarioTest {
         pelicula1.setDuracion(200);
         pelicula2.setDuracion(210);
 
-        /*capitulo1.setDuracion(50);
-        capitulo2.setDuracion(58);
-        capTemp1=new ArrayList<>();
-        capTemp1.add(capitulo1);
-        capTemp1.add(capitulo2);
-        temporada1.setCapitulos(capTemp1);
-        temporadasSerie1= new ArrayList<>();
-        temporadasSerie1.add(temporada1);*/
         serie1= new Serie("Friends");
         serie1.setGenero("Comedia");
         serie1.genero();

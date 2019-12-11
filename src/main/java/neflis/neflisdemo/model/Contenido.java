@@ -6,7 +6,10 @@ import neflis.neflisdemo.util.Sha1;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+
 @JsonInclude(JsonInclude.Include.NON_NULL) //Para que el metodo no traiga los null
 public class Contenido implements Serializable {
 
@@ -36,6 +39,11 @@ public class Contenido implements Serializable {
         this.totalSeasons= totalSeasons;
 
     }
+
+    /*public <T> List <T> fromArrayToList(T[]a){
+        return Arrays.stream(a).collect(Collectors.toList());
+    }*/
+
     public String getId() {
         return Sha1.sha1(this.toString());
     } // Sha aplicado al objeto
