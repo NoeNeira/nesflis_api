@@ -14,22 +14,23 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 public class UserService  {
     //private UserRepository userRepository;
-    protected List<UserApi> usersList;
-    //public List<Contenido> contenidos;
-    //public ContenidoService contenidoService;
-
+    private List<UserApi> usersList;
     //public UserService(UserStorage)
     /*public UserService(UserRepository userRepository){
         this.userRepository=userRepository;}*/
 
+    public List<UserApi> getUsersList() {
+        if(usersList == null) {
+            usersList = new ArrayList<>();
+        }
+        return usersList;
+    }
     public void UserService(){
         if(this.usersList == null){
             this.usersList= usuarios();}}
@@ -37,9 +38,6 @@ public class UserService  {
     /*public UserApi agregarUser(UserApi user){ return
             userRepository.save(user);
     }*/
-    public List<UserApi> generoMasVisto(String id, String genre){
-        return usuariosPorId(id).stream().filter(u->u.generoPreferido().equals(genre)).collect(Collectors.toList());
-    }
     public List<UserApi> usuariosPorIdContenidoRecomendado(String id){ //Trae usuarios por id
         //usersList=userRepository.findAll();
         if(id==null){
@@ -47,8 +45,7 @@ public class UserService  {
         else {return usuariosContenidoRecomendado().stream().filter(userApi -> userApi.getId()
                 .equals(id)).collect(Collectors.toList());
         }}
-
-    public List<UserApi> usuariosPorId(String id){//Trae usuarios por id
+    public List<UserApi> usuariosPorId(String id){ //Trae usuarios por id
         //usersList=userRepository.findAll();
         if(id==null){
         return usuarios() ;}
@@ -56,7 +53,6 @@ public class UserService  {
                 .equals(id)).collect(Collectors.toList());
         }
     }
-
     public List<UserApi> usuariosContenidoRecomendado(){
         List<UserApi> users = new ArrayList<>();
         UserApi yaz= new UserApi("1L", "yaz");
@@ -81,7 +77,7 @@ public class UserService  {
         users.add(nadia);
         yaz.setContenidos(contenidosVistosA());
 
-    return users; }
+        return users; }
 
     public List<Contenido> cargarContenidosQueNoVio() { // Contenidos de series y peliculas
         List<Contenido> contenidoTotal= new ArrayList<>();

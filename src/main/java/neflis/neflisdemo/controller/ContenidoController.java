@@ -14,7 +14,7 @@ public class ContenidoController {
     public ContenidoController(ContenidoService contenidoService) {
         this.contenidoService = contenidoService;
     }
-
+    /** 1er Ejercicio**/
     @GetMapping("/contents") //Trae todos los contenidos, series y peliculas
     public List<Contenido> contents() {
         return contenidoService.cargarContenidosIniciales();
@@ -23,7 +23,7 @@ public class ContenidoController {
     @GetMapping("/contentsTitulo") //Trae el contenido por titulo
     public List<Contenido> contents(@RequestParam(value = "title", required = false) String title) {
         return contenidoService.contenidoPorTitulo(title);
-    }// http://localhost:8080/contentsTitulo?title=You
+    } // http://localhost:8080/contentsTitulo?title=You
 
     /*@GetMapping("/contentsRuntime/{genre}")
     public List<Contenido> contentss (@PathVariable(value = "genre") String genre,
@@ -43,11 +43,6 @@ public class ContenidoController {
             cargarContenidosIniciales().stream().filter( c->c.getGenre()
                     .equals( genre ) ).mapToInt( c-> c.cortarRuntime())
                     .sum();}
-
-    @GetMapping("/contentsRuntime") //Trae el contenido por titulo
-    public List<Contenido> contentss (@RequestParam(value = "runtime", required = false) String runtime) {
-        return contenidoService.contenidoPorRuntime(runtime);
-}}
 
 
     /*@PostMapping("/contents")

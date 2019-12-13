@@ -10,11 +10,10 @@ import static org.hamcrest.core.IsEqual.equalTo;
 
 public class ContenidoControllerTest {
 
-
-
     @Test //Solo anda si primero de corre la demoApp y dsp el test
-    public void whenGetRequestWithQueryParameter_thenCorrect()
+    public void testContenidosTotales()
             throws IOException {
+
         OkHttpClient client = new OkHttpClient();
         HttpUrl.Builder urlBuilder = HttpUrl.parse("http://localhost:8080/" + "contents" ).newBuilder();
 
@@ -26,6 +25,12 @@ public class ContenidoControllerTest {
                 .build();
         Call call = client.newCall(request);
         Response response = call.execute();
+
+        try {response.code();
+
+    } catch (NullPointerException e) {
+     System.out.println("No anda el servicio");
+    }
 
         assertThat(response.code(), equalTo(200));
     }}

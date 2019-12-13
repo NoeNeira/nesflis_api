@@ -19,30 +19,26 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
-   /* @GetMapping("/users/{id}")
+
+    /* @GetMapping("/users/{id}")
     public List<UserApi> usuarioContenido(@PathVariable (value="id") Long id,
                                           @RestController (value="genre", required = false) String genre){
         return userService.featureContents(genre);
     }*/
 
-   /* @GetMapping("/users")
-    public List<UserApi> usuarioPorId(@RequestParam(value = "id", required = false) String id) {
-        return userService.usuariosPorIdContenidoVisto(id);
-    }//http://localhost:8080/users?id=1L*/
-
-    /** Ejercicio 3**/
-    @GetMapping("/users/{id}")
-    public List<UserApi> usuarioContenido(@PathVariable(value = "id") String id,
+    /**Ejercicio 3**/
+    @GetMapping("/users/{id}/watched")
+    public List<UserApi> usuarioContenido (@PathVariable(value = "id") String id,
                                           @RequestParam(value = "watched", required = false) String watched) {
         return userService.usuariosPorId(id);
-    }  //http://localhost:8080/users/1L?watched
+    }  //http://localhost:8080/users/1L/watched
 
-   /**Ejercicio2**/
-    @GetMapping("/user/{id}")
+    /**Ejercicio 2**/
+    @GetMapping("/users/{id}/featured")
     public List<UserApi> contenidoRuntimes (@PathVariable(value = "id") String id,
                                               @RequestParam(value="featured", required = false) String featured)
-    { return userService.usuariosPorIdContenidoRecomendado(id);}}
-        //http://localhost:8080/user/1L?featured
+    { return userService.usuariosPorIdContenidoRecomendado(id);}
+    }  //http://localhost:8080/users/1L/featured
 
 
 

@@ -9,6 +9,7 @@ import okhttp3.*;
 import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MockMvcBuilder;
@@ -34,13 +35,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 public class UserControllerTest {
     private MockMvc mockMvc;
-    private UserController userController;
-    private UserService userService;
-    private UserApi userApi;
+    UserController userController;
+    UserService userService;
     UserApi yaz;
     UserApi noe;
     UserApi nadia;
-
+    private TestRestTemplate restTemplate;
     @BeforeEach
     void setUp() {
         yaz = new UserApi("1L", "yaz");
@@ -48,68 +48,26 @@ public class UserControllerTest {
         nadia = new UserApi("3L", "nadia");
     }
 
-   /* @Before
-    public void initController(){
-        mockMvc= MockMvcBuilders.standaloneSetup(userController).build();
-    }*/
-
     @Test
     public void testFindById() {
-        // given
         assertEquals("1L", yaz.getId());
     }
-    /*@Test
-    public void testGetUsuarios(){
-        List<Contenido> contenidoList= new ArrayList<>();
-        String contenidoVisto1 = Util.URL_API + "?t=titanic&apikey=" + Util.API_KEY;
-        String contenidoVisto2 = Util.URL_API + "?t=braveheart&apikey=" + Util.API_KEY;
-        String contenidoVisto3 = Util.URL_API + "?t=breaking+bad&apikey=" + Util.API_KEY;
-        yaz.setContenidos(contenidoList);
-        assertEquals(contenidoList, userService.usuarios());
 
-    }*/
-
-    /*@Test
-    public void testUser()
-            throws Exception {
-        {
-            //private MockMvc mockMvc;
-            private UserController userController;
-            private UserService userService;
-            private UserApi userApi;
-            UserApi yaz;
-            UserApi noe;
-            UserApi nadia;
-
-            @BeforeEach
-            void setUp () {
-            yaz = new UserApi("1L", "yaz");
-            noe = new UserApi("2L", "noe");
-            nadia = new UserApi("3L", "nadia");
-        }*/
-
-   /* @Before
-    public void initController(){
-        mockMvc= MockMvcBuilders.standaloneSetup(userController).build();
-    }*
-    /*@Test
-    public void testGetUsuarios(){
-        List<Contenido> contenidoList= new ArrayList<>();
-        String contenidoVisto1 = Util.URL_API + "?t=titanic&apikey=" + Util.API_KEY;
-        String contenidoVisto2 = Util.URL_API + "?t=braveheart&apikey=" + Util.API_KEY;
-        String contenidoVisto3 = Util.URL_API + "?t=breaking+bad&apikey=" + Util.API_KEY;
-        yaz.setContenidos(contenidoList);
-        assertEquals(contenidoList, userService.usuarios());
-
-    }*/
-
+  /* @Test
+   public void testAllUsers()
+   {
+       assertTrue(
+               this.restTemplate
+                       .getForObject("http://localhost:8080/" + "users/{id}", UserService.class)
+                       .usuarios().size() == 1);
+       System.out.println();
+   }*/
     @Test //Solo anda si primero de corre la demoApp y dsp el test
-    public void whenGetRequestWithQueryParameter_thenCorrect()
+    public void testContenidoVistoPorUsuario()
     throws IOException {
         OkHttpClient client = new OkHttpClient();
-    HttpUrl.Builder urlBuilder = HttpUrl.parse("http://localhost:8080/" + "users/1L?watched" ).newBuilder();
-        //urlBuilder.addQueryParameter("id", "1L");
-        //urlBuilder.addQueryParameter("watched", "watched");
+    HttpUrl.Builder urlBuilder = HttpUrl.parse("http://localhost:8080/" + "users/1L/watched" ).newBuilder();
+
     String url = urlBuilder.build().toString();
     System.out.println(url);
     Request request = new Request.Builder()
@@ -117,6 +75,31 @@ public class UserControllerTest {
             .build();
     Call call = client.newCall(request);
     Response response = call.execute();
+        try {response.code();
+
+        } catch (NullPointerException e) {
+            System.out.println("No anda el servicio");
+        }
 
     assertThat(response.code(), equalTo(200));
-}}
+}
+    @Test //Solo anda si primero de corre la demoApp y dsp el test
+    public void testContenidoRecomendadoPorUsuario()
+            throws IOException {
+        OkHttpClient client = new OkHttpClient();
+        HttpUrl.Builder urlBuilder = HttpUrl.parse("http://localhost:8080/" + "users/1L/featured" ).newBuilder();
+
+        String url = urlBuilder.build().toString();
+        System.out.println(url);
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+        Call call = client.newCall(request);
+        Response response = call.execute();
+        try {response.code();
+
+        } catch (NullPointerException e) {
+            System.out.println("No anda el servicio");
+        }
+        assertThat(response.code(), equalTo(200));
+    }}

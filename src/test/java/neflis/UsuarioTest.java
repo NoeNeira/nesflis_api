@@ -16,11 +16,6 @@ public class UsuarioTest {
     List<Contenido> contenidoVisto;
     Pelicula pelicula1;
     Pelicula pelicula2;
-    Capitulo capitulo1;
-    Capitulo capitulo2;
-    List<Capitulo> capTemp1;
-    List<Temporada>temporadasSerie1;
-    Temporada temporada1;
     Serie serie1;
     Serie serie2;
 
@@ -58,19 +53,6 @@ public class UsuarioTest {
         assertFalse(usuarioA.vioContenidoCompleto(serie2));
 
     }
-   /* @Test
-    void testMinVistosPorGenero(){
-        serie1=mock(Serie.class);
-        capitulo1=mock(Capitulo.class);
-        capitulo2=mock(Capitulo.class);
-        temporada1=mock(Temporada.class);
-        capitulo1.setTemporada(temporada1);
-        capitulo2.setTemporada(temporada1);
-        temporada1.setSerie(serie1);
-        when(temporada1.duracion()).thenReturn(58);
-        //when(capitulo2.duracion()).thenReturn(57);
-        //assertEquals(900, usuarioA.minVistosxGenero("Comedia").intValue());
-        assertEquals(500, serie1.duracion().intValue());}*/
 
     @Test
     void testGenerosqueVioPorContenido(){

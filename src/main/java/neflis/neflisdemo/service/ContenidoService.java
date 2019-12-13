@@ -47,8 +47,11 @@ public class ContenidoService {
         return contenidoPorGenre(genre).stream().filter(c->c.cortarRuntime().equals(runtime)).collect(Collectors.toList());}
 
     public List<Contenido> contenidoPorGenre(String genre){
+        if(genre== null) {
+            return cargarContenidosIniciales();}
+            else {
         return cargarContenidosIniciales().stream().filter(c->c.getGenre().equals(genre)).collect(Collectors.toList());
-    }
+    }}
     public List<Contenido> contenidoPorTitulo(String title) { //Contenidos por titulo
         //contenidos=contenidoRepository.findAll();
         if (title == null) {
@@ -66,9 +69,6 @@ public class ContenidoService {
         Contenido c = getContenido(movie1URL);
         Contenido d = getContenido(movie2URL);
         Contenido e = getContenido(movie3URL);
-       /* c.getRuntime(); c.cortarRuntime(); c.getGenre();
-        d.getRuntime(); d.cortarRuntime(); d.getGenre();
-        e.getRuntime(); e.cortarRuntime(); e.getGenre();*/
 
         String serie1 = Util.URL_API + "?t=breaking+bad&apikey=" + Util.API_KEY;
         String serie2 = Util.URL_API + "?t=stranger+things&apikey=" + Util.API_KEY;
@@ -120,6 +120,7 @@ public class ContenidoService {
         return contentsList;
     }*/
     }
+
     public void setContentsList(List<Contenido> contentsList) {
         this.contentsList = contentsList;
     }

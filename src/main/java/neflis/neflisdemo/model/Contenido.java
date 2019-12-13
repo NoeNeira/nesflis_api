@@ -5,10 +5,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import neflis.neflisdemo.util.Sha1;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 @JsonInclude(JsonInclude.Include.NON_NULL) //Para que el metodo no traiga los null
 public class Contenido implements Serializable {
@@ -37,17 +35,11 @@ public class Contenido implements Serializable {
         this.actors = actors;
         this.plot = plot;
         this.totalSeasons= totalSeasons;
-
     }
-
-    /*public <T> List <T> fromArrayToList(T[]a){
-        return Arrays.stream(a).collect(Collectors.toList());
-    }*/
 
     public String getId() {
         return Sha1.sha1(this.toString());
-    } // Sha aplicado al objeto
-
+    } // Sha aplicado al objet
     public void setId(String id) {
         this.id = id;
     }
@@ -73,9 +65,6 @@ public class Contenido implements Serializable {
     public String getGenre() {
         return  genre;
     }
-
-    //public String getOneGenre(){return String.valueOf(this.getGenre().split(",")[1]);}
-
     public void setGenre(String genre) {
         this.genre = genre;
     }
@@ -103,11 +92,9 @@ public class Contenido implements Serializable {
     public SeasonApi getSeasons() {
         return seasons;
     }
-
     public void setSeasons(SeasonApi seasons) {
         this.seasons = seasons;
     }
-
     public void setTotalSeasons(String totalSeasons) {
         this.totalSeasons = totalSeasons;
     }
@@ -120,4 +107,5 @@ public class Contenido implements Serializable {
         this.contenidos = contenidos;
     }
 
-    public Integer cortarRuntime(){ return Integer.valueOf(this.getRuntime().split("\\s")[0]);}}
+    public Integer cortarRuntime(){
+        return Integer.valueOf(this.getRuntime().split("\\s")[0]);}}
