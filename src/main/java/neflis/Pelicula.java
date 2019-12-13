@@ -1,24 +1,24 @@
 package neflis;
 
 public class Pelicula extends ContenidoUnitario{
-
     public String genero;
     public Integer duracion;
     public Boolean actorActuo;
 
-    protected Pelicula(Integer duracion, String actores, String genero){
-        this.duracion=duracion;
+    public Pelicula( String actores){
         this.actores=actores;
-        this.genero=genero;
+
     }
     public Boolean fueVistoCompletaX(Usuario usuario){
-        return usuario.getContenido().contains( usuario );}
+        return usuario.getContenido().contains( this );}
 
     public void setGenero(String genero) {
         this.genero = genero;}
     public String genero() {
         return genero;}
-
+    public void setDuracion(Integer duracion) {
+        this.duracion = duracion;
+    }
     public Integer duracion() {
         return duracion;
     }

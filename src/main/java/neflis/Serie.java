@@ -3,16 +3,23 @@ package neflis;
 import java.util.List;
 
 public class Serie implements Contenido {
-    String nombreSerie;
-    private List<Temporada> temporadas;
-    public String genero;
-    public Integer duracion;
 
-    public Serie(String nombreSerie, List<Temporada> temporadas, String genero) {
+    String nombreSerie;
+    public List<Temporada> temporadas;
+    public String genero;
+    //public Integer duracion;
+
+    public Serie(String nombreSerie) {
         this.nombreSerie = nombreSerie;
-        this.temporadas = temporadas;
-        this.genero=genero;
     }
+
+    public List<Temporada> getTemporadas() {
+        return temporadas;
+    }
+    public void setTemporadas(List<Temporada> temporadas) {
+        this.temporadas = temporadas;
+    }
+
     public Boolean fueVistoCompletaX(Usuario usuario) {
         return this.temporadas.stream().
                 allMatch( temporadas -> temporadas.fueVistoCompletaX( usuario ) );
@@ -21,11 +28,13 @@ public class Serie implements Contenido {
         return temporadas.stream().map( t -> t.duracion() )
                 .reduce( 0, Integer::sum );
     }
+    public Integer getDuracion(){return this.duracion();}
     /** 3 ejercicio**/
     public Capitulo ultimoCapituloSerie() {
         return temporadas.get( temporadas.size() - 1 ).ultimoCapituloSerie();
     }
     /** 4 ejercicio**/
+
     public void setGenero(String genero) {
         this.genero = genero;
     }

@@ -4,36 +4,49 @@ import java.util.List;
 
 
 public class Temporada implements Contenido {
-    private List<Capitulo> capitulo;
+
+
+    public Serie serie;
+    public List<Capitulo> capitulos;
     Integer numTemp;
-    private Integer duracion;
+    //public Integer duracion;
     public String genero;
 
-    public Temporada(Integer numTemp, List<Capitulo>capitulo){
-        this.capitulo=capitulo;
+
+    public Temporada(Integer numTemp){
         this.numTemp=numTemp;
     }
-    public Serie serie;
-    public void setSerie(Serie serie){this.serie=serie;}
+    public List<Capitulo> getCapitulos() {
+        return capitulos;
+    }
+    public void setCapitulos(List<Capitulo> capitulos) {
+        this.capitulos = capitulos;
+    }
+
+    public Serie getSerie() {
+        return serie;
+    }
+
+    public void setSerie(Serie serie) {
+        this.serie = serie;
+    }
+
     public Boolean fueVistoCompletaX(Usuario usuario) {
-        return this.capitulo.stream().
+        return this.capitulos.stream().
                 allMatch( capitulo -> capitulo.fueVistoCompletaX( usuario ) );
     }
-    public Temporada(Serie serie){this.serie=serie;}
-    public void setGenero(String genero){this.genero=genero;}
-
     public String genero() {
-        return this.serie.genero();}
-
+        return serie.genero();}
 
     /**obtengo duracion de cada capitulo sumado**/
     public Integer duracion(){
-        return capitulo.stream().map( c -> c.duracion() ).reduce( 0, Integer::sum );
+        return capitulos.stream().map( c -> c.duracion() ).reduce( 0, Integer::sum );
 
     }
+    public Integer getDuracion(){return this.duracion();}
     /**Obtengo ultimo cap de la serie**/
     public Capitulo ultimoCapituloSerie() {
-        return capitulo.get(capitulo.size()-1); }
+        return capitulos.get(capitulos.size()-1); }
 
 }
 

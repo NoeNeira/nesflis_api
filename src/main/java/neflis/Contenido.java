@@ -1,10 +1,8 @@
 package neflis;
 
 public interface Contenido {
-    public String genero();
+    String genero();
     //public Boolean actorActuo();
-    public Integer duracion();
-    public Boolean fueVistoCompletaX(Usuario usuario);
-
+    Integer duracion();
+    Boolean fueVistoCompletaX(Usuario usuario);
 }
-
