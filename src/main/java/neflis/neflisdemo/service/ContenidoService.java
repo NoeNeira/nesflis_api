@@ -125,14 +125,14 @@ public class ContenidoService {
         this.contentsList = contentsList;
     }
 
-    /*public ContenidoApi contents() {
+    /*public Contenido contents() {
         return contents = contenidoStorage.contents();
 
-    public ContenidoApi getcontents() {
+    public Contenido getcontents() {
         return contents;
     }
 
-    public ContenidoApi agregarContents(ContenidoApi newcontents) {
+    public Contenido agregarContents(Contenido newcontents) {
         long count = contentsList.stream().count();
         int i=contentsList.stream().skip(count - 1).findFirst().get().getId();
         newcontents.setId(i+1);

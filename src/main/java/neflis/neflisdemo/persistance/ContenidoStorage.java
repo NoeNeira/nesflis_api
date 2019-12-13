@@ -35,7 +35,7 @@ public class ContenidoStorage {
         return result;
 
     }     }
-    /*public void agregarContentss (List <ContenidoApi> contents){
+    /*public void agregarContentss (List <Contenido> contents){
         try {
             objectMapper.writeValue(
                     new File("src/main/resources/Contents.json"), contents);

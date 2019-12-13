@@ -47,9 +47,3 @@ INSERT INTO contenidoVistoPorUsuario (id, id_user, title) values
     ('3LTITANIC','3L','Titanic'),
     ('3LYOU','3L','You'),
     ('3LBRAVEHEART','3L','Brave heart');
-
-
-
-
-
-

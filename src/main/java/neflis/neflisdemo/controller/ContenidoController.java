@@ -38,7 +38,7 @@ public class ContenidoController {
                 contenidoService.agregarContenido(contenido);}*/
 }
     /*@PostMapping("/contents")
-    public ContenidoApi addContent(@RequestBody ContenidoApi contents){
+    public Contenido addContent(@RequestBody Contenido contents){
         return contenidoService.agregarC public Integer minVistosxGenero(String genre){return
             cargarContenidosIniciales().stream().filter( c->c.getGenre()
                     .equals( genre ) ).mapToInt( c-> c.cortarRuntime())
@@ -46,5 +46,5 @@ public class ContenidoController {
 
 
     /*@PostMapping("/contents")
-    public ContenidoApi addContent(@RequestBody ContenidoApi contents){
+    public Contenido addContent(@RequestBody Contenido contents){
         return contenidoService.agregarContents(contents);}}*/
