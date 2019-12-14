@@ -75,7 +75,7 @@ public class UserService  {
         users.add(yaz);
         users.add(noe);
         users.add(nadia);
-        yaz.setContenidos(contenidosVistosA());
+        yaz.setContenidos(contenidosVistosA()); // el otro metodo, clase.
 
         return users; }
 

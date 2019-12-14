@@ -9,7 +9,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 @Entity
-@Table(name="users", uniqueConstraints = {@UniqueConstraint(columnNames={"username"})})
+@Table(name="users", uniqueConstraints = {@UniqueConstraint(columnNames={"id"})})
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserApi {

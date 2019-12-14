@@ -14,16 +14,16 @@ public class ContenidoController {
     public ContenidoController(ContenidoService contenidoService) {
         this.contenidoService = contenidoService;
     }
-    /** 1er Ejercicio**/
+    /** 1er Ejercicio. http://localhost:8080/contents**/
     @GetMapping("/contents") //Trae todos los contenidos, series y peliculas
     public List<Contenido> contents() {
-        return contenidoService.cargarContenidosIniciales();
-    } //http://localhost:8080/contents
+        return contenidoService.cargarContenidosIniciales(); //cambiar nombre a metodo fetch
+    }
 
     @GetMapping("/contentsTitulo") //Trae el contenido por titulo
     public List<Contenido> contents(@RequestParam(value = "title", required = false) String title) {
         return contenidoService.contenidoPorTitulo(title);
-    } // http://localhost:8080/contentsTitulo?title=You
+    } // http://localhost:8080/contentsTitulo?title=You  ver
 
     /*@GetMapping("/contentsRuntime/{genre}")
     public List<Contenido> contentss (@PathVariable(value = "genre") String genre,

@@ -26,20 +26,19 @@ public class UserController {
         return userService.featureContents(genre);
     }*/
 
-    /**Ejercicio 3**/
+    /**Ejercicio 3. http://localhost:8080/users/1L/watched**/
     @GetMapping("/users/{id}/watched")
     public List<UserApi> usuarioContenido (@PathVariable(value = "id") String id,
                                           @RequestParam(value = "watched", required = false) String watched) {
         return userService.usuariosPorId(id);
-    }  //http://localhost:8080/users/1L/watched
+    }
 
-    /**Ejercicio 2**/
+    /**Ejercicio 2. http://localhost:8080/users/1L/featured**/
     @GetMapping("/users/{id}/featured")
     public List<UserApi> contenidoRuntimes (@PathVariable(value = "id") String id,
                                               @RequestParam(value="featured", required = false) String featured)
     { return userService.usuariosPorIdContenidoRecomendado(id);}
-    }  //http://localhost:8080/users/1L/featured
-
+    }
 
 
 
