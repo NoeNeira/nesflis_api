@@ -23,7 +23,7 @@ public class ContenidoController {
     @GetMapping("/contentsTitulo") //Trae el contenido por titulo
     public List<Contenido> contents(@RequestParam(value = "title", required = false) String title) {
         return contenidoService.contenidoPorTitulo(title);
-    } // http://localhost:8080/contentsTitulo?title=You  vergit
+    } // http://localhost:8080/contentsTitulo?title=You  ver git
 
     /*@GetMapping("/contentsRuntime/{genre}")
     public List<Contenido> contentss (@PathVariable(value = "genre") String genre,
